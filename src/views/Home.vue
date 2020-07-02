@@ -6,9 +6,9 @@
 </template>
 
 <script>
-import EJS from "ejs";
+import ejs from "ejs";
 import FileSaver from "file-saver";
-
+import JSZip from 'jszip'
 const VUE_NAME = 'This#is#fileName'
 
 const outExportFileByStr = (fileName,str) => {
@@ -17,17 +17,47 @@ const outExportFileByStr = (fileName,str) => {
     FileSaver.saveAs(blob, fileName)
 }
 
+const htmltemp = `<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title><%= title %></title>
+  </head>
+  <body>
+    <noscript>
+      <strong>We're sorry but <%= title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    </noscript>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+  </body>
+</html>
+`
+
+
 export default {
   name: "Home",
   methods: {
     download() {
-      var ejs = require("ejs");
       var people = ["geddy", "neil", "alex"];
-      const temp = '<div><%= people.join(", ") %></div>';
-      var html = ejs.render(temp, { people: people });
-      console.log(html);
+      const temp = '<template><div><%= people.join(", ") %></div></template>';
+      const vue = ejs.render(temp, { people: people });
+      const html = ejs.render(htmltemp, {title: '这是个伟大的想法'})
+      
+      const fileName = '测试'
+      const pointer = new JSZip()
+      pointer.file('app.vue', vue)
+      pointer.file('index.html', html)
 
-      outExportFileByStr('hha.vue', html)
+      pointer.generateAsync({
+        type: "blob"
+      }).then((blob) => {
+          FileSaver.saveAs(blob, `${fileName}.zip`)
+      }, (err) => {
+          alert('导出失败')
+      })
+      // outExportFileByStr('hha.vue', html)
       
     }
   }
