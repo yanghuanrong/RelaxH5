@@ -9,6 +9,10 @@
 import ejs from "ejs";
 import FileSaver from "file-saver";
 import JSZip from 'jszip'
+// const packageInfo = require('../../package.json')
+
+import packageInfo from '../../package.json'
+
 const VUE_NAME = 'This#is#fileName'
 
 const outExportFileByStr = (fileName,str) => {
@@ -35,6 +39,10 @@ const htmltemp = `<!DOCTYPE html>
 </html>
 `
 
+const readme = `测试啊`
+
+
+console.log(packageInfo)
 
 export default {
   name: "Home",
@@ -49,7 +57,8 @@ export default {
       const pointer = new JSZip()
       pointer.file('app.vue', vue)
       pointer.file('index.html', html)
-
+      // pointer.file('package.json', packageInfo)
+      // pointer.file('README.md', readme)
       pointer.generateAsync({
         type: "blob"
       }).then((blob) => {
