@@ -1,14 +1,25 @@
 @import "rest.less";
 
+#app, body, html {
+    position: relative;
+    height: 100%;
+}
+
+
 .editor-toolbar__top{
-    height: 60px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    
+    height: 50px;
     display: flex;
     border-bottom: 1px solid #ccc;
     justify-content: space-between;
     padding: 0 20px;
 
     .logo{
-        width: 40px;
+        width: 35px;
     }
 
     .control-bar-wrapper{
@@ -19,7 +30,7 @@
             font-size: 16px;
         }
         .zoom{
-            line-height: 60px;
+            line-height: 50px;
             span{
                 margin: 0 5px;
             }
@@ -39,10 +50,47 @@
     }
 
     .user-github {
-        line-height: 60px;
+        display: flex;
+        align-items: center;
         i{
             font-size: 24px;
             cursor: pointer;
         }
     }
+}
+
+.editor-page{
+    height: inherit;
+    padding-top: 50px;
+}
+
+.page-wrapper{
+    height: 100%;
+    display: flex;
+
+    .editor-toolbar__left{
+        width: 300px;
+    }
+
+    .editor-toolbar__center{
+        flex: 1;
+        overflow: auto;
+        background: #ccc;
+        position: relative;
+    }
+
+    .editor-toolbar__right{
+        width: 200px;
+    }
+
+}
+
+.edit-main{
+    width: 375px;
+    height: 667px;
+    background: #FFF;
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    margin-left: 375px * -0.5;
 }
