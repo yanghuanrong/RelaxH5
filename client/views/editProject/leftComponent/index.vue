@@ -28,22 +28,30 @@ export default {
     return {
       layout: [
         {
+          name: "布局 1",
           componentName: "Container",
           col: {
             span: "24"
-          }
+          },
+           tasks: []
         },
         {
+          name: "布局 2",
           componentName: "Container",
           col: {
             span: "12:12"
-          }
+          },
+           tasks: []
+
         },
         {
+          name: "布局 3",
           componentName: "Container",
           col: {
             span: "8:8:8"
-          }
+          },
+           tasks: []
+
         }
       ]
     };

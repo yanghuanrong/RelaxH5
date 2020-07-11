@@ -6,7 +6,7 @@
     > -->
       <van-row v-bind="row">
         <van-col v-bind="colDep" :span="item" v-for="(item, k) in colDep.span" :key="'col' + k">
-          
+            <!-- <component :is="componentName"></component> -->
         </van-col>
       </van-row>
     <!-- </draggable> -->
