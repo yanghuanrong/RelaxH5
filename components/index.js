@@ -1,7 +1,7 @@
-import Layout from './layout'
+import Container from './container'
 
 const components = {
-    Layout
+    Container
 }
 
 const install = (Vue) => {

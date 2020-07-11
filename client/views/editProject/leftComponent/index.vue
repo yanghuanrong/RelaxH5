@@ -1,14 +1,13 @@
 <template>
   <div class="editor-toolbar__left">
-    <!-- <draggable
-      :list="list"
-      :options="{sort:false}"
-      :group="{ name: 'layouts', pull: 'clone', put: false}"
-    >-->
-    <!-- <component v-for="(item, i) in list" :key="i + '1'" :is="item.name">{{i}}</component> -->
-    <!-- </draggable> -->
     <div class="left-layout-wrap">
-        <Layout :layout="layout" class="left-layout-grid" />
+      <draggable
+        :list="layout"
+        :options="{sort:false}"
+        :group="{ name: 'layouts', pull: 'clone', put: false}"
+      >
+        <Container v-for="(item, i) in layout" v-bind="item" :key="'left-layout' + i" class="left-layout-grid" />
+      </draggable>
     </div>
   </div>
 </template>
@@ -22,26 +21,33 @@ export default {
   },
   data() {
     return {
-      list: [
-        { id: 1, name: "vant" },
-        { id: 2, name: "方法" },
-        { id: 3, name: "嗯嗯" },
-        { id: 4, name: "刚刚" }
-      ],
       layout: [
         {
-          tag: "ul",
-          gutter: 10,
+          name: "布局 1",
+          id: 0,
+          componentName: "Container",
+          row: {
+            tag: "ul",
+            gutter: 10,
+          },
+          col: {
+            span: "24",
+            tag: "li"
+          }
+        },
+        {
+          name: "布局 2",
+          id: 1,
+          componentName: "Container",
+          row: {
+            tag: "ul",
+            gutter: 10,
+          },
           col: {
             span: "8:8:8",
             tag: "li"
           }
         },
-        {
-          col: {
-            span: "4:16:4"
-          }
-        }
       ]
     };
   }
