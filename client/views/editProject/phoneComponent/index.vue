@@ -1,17 +1,17 @@
 <template>
-  <div class="phone-wrap">
+  <div class="phone-page">
     <draggable
       group="layouts"
-      style="min-height:100%; overflow: auto"
+      class="phone-wrap eidtor"
       :list="list"
-      @onClone="end"
       :options="{
+        animation: 150,
+        fallbackOnBody: true,
+        invertSwap: true
                    }"
     >
       <template v-for="(item, i) in list">
-        <component :key="i" :is="item.componentName"
-                               v-bind="item"
-        ></component>
+        <component :key="i" :is="item.componentName" v-bind="item"></component>
       </template>
     </draggable>
   </div>
@@ -26,31 +26,12 @@ export default {
   },
   data() {
     return {
-      list: [{
-          name: "布局 1",
-          id: 0,
-          componentName: "Container",
-          row: {
-            tag: "ul",
-            gutter: 10,
-          },
-          col: {
-            span: "24",
-            tag: "li"
-          }
-        }]
+      list: []
     };
   },
   watch: {
-    list: function(value){
-      console.log(value)
-    }
-  },
-  methods: {
-    end(){
-      console.log(
-        this.list
-      )
+    list: function(value) {
+      console.log(value);
     }
   }
 };

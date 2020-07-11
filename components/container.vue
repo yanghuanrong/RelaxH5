@@ -5,7 +5,9 @@
       :group="{ name: 'layouts', pull: 'clone', put: false}"
     > -->
       <van-row v-bind="row">
-        <van-col v-bind="colDep" :span="item" v-for="(item, k) in colDep.span" :key="'col' + k"></van-col>
+        <van-col v-bind="colDep" :span="item" v-for="(item, k) in colDep.span" :key="'col' + k">
+          
+        </van-col>
       </van-row>
     <!-- </draggable> -->
 </template>

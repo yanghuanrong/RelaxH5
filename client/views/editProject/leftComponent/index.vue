@@ -6,7 +6,12 @@
         :options="{sort:false}"
         :group="{ name: 'layouts', pull: 'clone', put: false}"
       >
-        <Container v-for="(item, i) in layout" v-bind="item" :key="'left-layout' + i" class="left-layout-grid" />
+        <Container
+          v-for="(item, i) in layout"
+          v-bind="item"
+          :key="'left-layout' + i"
+          class="left-layout-grid"
+        />
       </draggable>
     </div>
   </div>
@@ -23,21 +28,23 @@ export default {
     return {
       layout: [
         {
-          name: "布局 1",
           componentName: "Container",
           col: {
-            span: "24",
-            tag: "li"
+            span: "24"
           }
         },
         {
-          name: "布局 2",
           componentName: "Container",
           col: {
-            span: "8:8:8",
-            tag: "li"
+            span: "12:12"
           }
         },
+        {
+          componentName: "Container",
+          col: {
+            span: "8:8:8"
+          }
+        }
       ]
     };
   }

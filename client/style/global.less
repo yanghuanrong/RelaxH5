@@ -1,50 +1,57 @@
 @import "rest.less";
 
-#app, body, html {
+#app,
+body,
+html {
     position: relative;
     height: 100%;
 }
 
 
-.editor-toolbar__top{
+.editor-toolbar__top {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    
+
     height: 50px;
     display: flex;
     border-bottom: 1px solid #f3f6f8;
     justify-content: space-between;
     padding: 0 20px;
 
-    .logo{
+    .logo {
         width: 35px;
     }
 
-    .control-bar-wrapper{
+    .control-bar-wrapper {
         display: flex;
         justify-content: center;
 
-        i{
+        i {
             font-size: 16px;
         }
-        .zoom{
+
+        .zoom {
             line-height: 50px;
-            span{
+
+            span {
                 margin: 0 5px;
             }
-            i{
+
+            i {
                 font-size: 16px;
                 cursor: pointer;
             }
+
             margin-right: 10px;
         }
-        .button-item{
+
+        .button-item {
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding:0 10px;
+            padding: 0 10px;
             cursor: pointer;
         }
     }
@@ -52,45 +59,46 @@
     .user-github {
         display: flex;
         align-items: center;
-        i{
+
+        i {
             font-size: 24px;
             cursor: pointer;
         }
     }
 }
 
-.editor-page{
+.editor-page {
     height: inherit;
     padding-top: 50px;
 }
 
-.page-wrapper{
+.page-wrapper {
     height: 100%;
     display: flex;
 
-    .editor-toolbar__left{
+    .editor-toolbar__left {
         width: 300px;
 
-        .left-layout-wrap{
+        .left-layout-wrap {
             padding: 20px;
         }
 
     }
 
-    .editor-toolbar__center{
+    .editor-toolbar__center {
         flex: 1;
         overflow: auto;
         background: #f3f6f8;
         position: relative;
     }
 
-    .editor-toolbar__right{
+    .editor-toolbar__right {
         width: 200px;
     }
 
 }
 
-.edit-main{
+.edit-main {
     width: 375px;
     height: 667px;
     background: #FFF;
@@ -101,36 +109,47 @@
     margin-left: 375px * -0.5;
     padding-top: 20px;
 
-    .phone-wrap{
+    .phone-page {
         height: 100%;
+    }
+
+    .phone-wrap.eidtor {
+        min-height: 100%;
+        overflow: auto;
+
+        [class^=van-row] {
+            
+        }
+
+        [class*=van-col] {
+            min-height: 30px;
+            border: 1px dotted #eee;
+        }
     }
 }
 
 
 .left-layout-grid {
-    margin-bottom: 30px;
-  
+    margin-bottom: 1px;
+
     [class^=van-row] {
-      background-color: #FFF;
-      background-image: linear-gradient(90deg, #ededed 4.16666667%, transparent 0, transparent 8.33333333%, #ededed 0, #ededed 12.5%, transparent 0, transparent 16.66666667%, #ededed 0, #ededed 20.83333333%, transparent 0, transparent 25%, #ededed 0, #ededed 29.16666667%, transparent 0, transparent 33.33333333%, #ededed 0, #ededed 37.5%, transparent 0, transparent 41.66666667%, #ededed 0, #ededed 45.83333333%, transparent 0, transparent 50%, #ededed 0, #ededed 54.16666667%, transparent 0, transparent 58.33333333%, #ededed 0, #ededed 62.5%, transparent 0, transparent 66.66666667%, #ededed 0, #ededed 70.83333333%, transparent 0, transparent 75%, #ededed 0, #ededed 79.16666667%, transparent 0, transparent 83.33333333%, #ededed 0, #ededed 87.5%, transparent 0, transparent 91.66666667%, #ededed 0, #ededed 95.83333333%, transparent 0);
-      margin-bottom: 5px;
-
-      
+        background-color: #FFF;
+        background-image: linear-gradient(90deg, #ededed 4.16666667%, transparent 0, transparent 8.33333333%, #ededed 0, #ededed 12.5%, transparent 0, transparent 16.66666667%, #ededed 0, #ededed 20.83333333%, transparent 0, transparent 25%, #ededed 0, #ededed 29.16666667%, transparent 0, transparent 33.33333333%, #ededed 0, #ededed 37.5%, transparent 0, transparent 41.66666667%, #ededed 0, #ededed 45.83333333%, transparent 0, transparent 50%, #ededed 0, #ededed 54.16666667%, transparent 0, transparent 58.33333333%, #ededed 0, #ededed 62.5%, transparent 0, transparent 66.66666667%, #ededed 0, #ededed 70.83333333%, transparent 0, transparent 75%, #ededed 0, #ededed 79.16666667%, transparent 0, transparent 83.33333333%, #ededed 0, #ededed 87.5%, transparent 0, transparent 91.66666667%, #ededed 0, #ededed 95.83333333%, transparent 0);
     }
-  
+
     [class*=van-col] {
-      color: #fff;
-      padding: 10px 0;
-      text-align: center;
-      font-size: 16px;
+        color: #fff;
+        padding: 10px 0;
+        text-align: center;
+        font-size: 16px;
+        cursor: pointer;
 
-      &:nth-child(odd) {
-        background: fade(#4eb7eb, 90%);
-      }
+        &:nth-child(odd) {
+            background: fade(#4eb7eb, 90%);
+        }
 
-      &:nth-child(even) {
-        background: fade(#4eb7eb, 70%);
-      }
-
+        &:nth-child(even) {
+            background: fade(#4eb7eb, 70%);
+        }
     }
-  }
+}
