@@ -1,4 +1,4 @@
-# drage-h5
+# RelaxH5
 
 ## Project setup
 ```

@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import editor from '../views/editor.vue'
+import editor from '../views/editProject/index.vue'
 
 Vue.use(VueRouter)
 

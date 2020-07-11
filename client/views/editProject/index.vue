@@ -39,36 +39,11 @@
     </div>
 
     <div class="page-wrapper">
-      <div class="editor-toolbar__left">
-        <draggable
-          :list="list"
-          :options="{sort:false}"
-          :group="{ name: 'layouts', pull: 'clone', put: false}"
-        >
-          <div
-            style="width: 100px; height: 100px; background: #F00"
-            v-for="(item, i) in list"
-            :key="i + '1'"
-          >
-            {{item.name}}
-          </div>
-        </draggable>
-      </div>
+      <leftComponent />
 
       <div class="editor-toolbar__center">
         <div class="edit-main">
-           <draggable group="layouts" :list="listb"
-                       :options="{
-                   }"
-            >
-                <template v-for="(item, i) in listb" >
-                  <div>{{item.name}}</div>
-                    <!-- <component :key="index" :is="item.componentName"
-                               :dataIIndex="index + ''"
-                               v-bind="item"
-                    ></component> -->
-                </template>
-            </draggable>
+          <phoneComponent />
         </div>
       </div>
 
@@ -78,17 +53,14 @@
 </template>
 
 <script>
-import draggable from "vuedraggable";
+import leftComponent from "./leftComponent/index";
+import phoneComponent from "./phoneComponent/index";
+
 export default {
-  name: "Home",
+  name: "editro",
   components: {
-    draggable
-  },
-  data() {
-    return {
-      listb: [],
-      list: [{id:1,name:'嘿嘿'}, {id:2,name:'方法'}, {id:3,name:'嗯嗯'}, {id:4,name:'刚刚'}]
-    };
+    leftComponent,
+    phoneComponent
   }
 };
 </script>

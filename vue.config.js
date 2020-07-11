@@ -11,8 +11,9 @@ module.exports = {
 	},
 	// 扩展 webpack 配置
 	chainWebpack: config => {
-		// @ 默认指向 src 目录，这里要改成 client
+		// @ 默认指向 src 目录，改成 client
 		config.resolve.alias
 			.set('@', path.resolve('client'))
+			.set('@components', path.resolve('components'))
 	}
 }
