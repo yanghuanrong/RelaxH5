@@ -1,5 +1,4 @@
 <template>
-  <div>
     <!-- <draggable
       :list="layoutDep"
       :options="{sort:false}"
@@ -9,7 +8,6 @@
         <van-col v-bind="colDep" :span="item" v-for="(item, k) in colDep.span" :key="'col' + k"></van-col>
       </van-row>
     <!-- </draggable> -->
-  </div>
 </template>
 
 <script>

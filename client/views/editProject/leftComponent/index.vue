@@ -24,12 +24,7 @@ export default {
       layout: [
         {
           name: "布局 1",
-          id: 0,
           componentName: "Container",
-          row: {
-            tag: "ul",
-            gutter: 10,
-          },
           col: {
             span: "24",
             tag: "li"
@@ -37,12 +32,7 @@ export default {
         },
         {
           name: "布局 2",
-          id: 1,
           componentName: "Container",
-          row: {
-            tag: "ul",
-            gutter: 10,
-          },
           col: {
             span: "8:8:8",
             tag: "li"
