@@ -9,7 +9,7 @@
       }"
   >
     <template v-for="(item, i) in tasks">
-      <component :key="'component' + i" :is="item.tasks.length >= 1 ? 'nested-draggable' : item.componentName" v-bind="item"></component>
+      <component :key="'component' + i" :is="item.componentName" v-bind="item"></component>
     </template>
   </draggable>
 </template>

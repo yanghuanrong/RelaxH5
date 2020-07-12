@@ -29,25 +29,7 @@ export default {
   },
   data() {
     return {
-      list: [
-        {
-          name: "布局 1",
-          componentName: "Container",
-          col: {
-            span: "24"
-          },
-          tasks: [
-            {
-              name: "布局 2",
-              componentName: "Container",
-              col: {
-                span: "12:12"
-              },
-              tasks: []
-            }
-          ]
-        }
-      ]
+      list: []
     };
   },
   watch: {

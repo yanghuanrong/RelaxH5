@@ -33,7 +33,7 @@ export default {
           col: {
             span: "24"
           },
-           tasks: []
+          tasks: []
         },
         {
           name: "布局 2",

@@ -1,7 +1,9 @@
 import Container from './container'
+import NestedContainer from './nested-container'
 
 const components = {
-    Container
+    Container,
+    NestedContainer
 }
 
 const install = (Vue) => {
