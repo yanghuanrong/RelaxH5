@@ -3,20 +3,6 @@
     <div class="phone-wrap eidtor">
       <nestedDraggable :tasks="list" />
     </div>
-    <!-- <draggable
-      group="layouts"
-      class="phone-wrap eidtor"
-      :list="list"
-      :options="{
-        animation: 150,
-        fallbackOnBody: true,
-        invertSwap: true
-      }"
-    >
-      <template v-for="(item, i) in list">
-        <component :key="i" :is="item.componentName" v-bind="item"></component>
-      </template>
-    </draggable>-->
   </div>
 </template>
 
@@ -29,7 +15,50 @@ export default {
   },
   data() {
     return {
-      list: []
+      list: [
+        {
+          name: "布局 1",
+          componentName: "Iflex",
+          col: [
+            {
+              span: 24,
+              children: []
+            }
+          ]
+        },
+        {
+          name: "布局 2:2",
+          componentName: "Iflex",
+          col: [
+            {
+              span: 12,
+              children: []
+            },
+            {
+              span: 12,
+              children: []
+            }
+          ]
+        },
+        {
+          name: "布局 3:3:3",
+          componentName: "Iflex",
+          col: [
+            {
+              span: 8,
+              children: []
+            },
+            {
+              span: 8,
+              children: []
+            },
+            {
+              span: 8,
+              children: []
+            }
+          ]
+        }
+      ]
     };
   },
   watch: {

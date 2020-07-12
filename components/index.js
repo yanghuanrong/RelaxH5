@@ -1,9 +1,11 @@
 import Container from './container'
+import Iflex from './flex'
 import NestedContainer from './nested-container'
 
 const components = {
     Container,
-    NestedContainer
+    NestedContainer,
+    Iflex
 }
 
 const install = (Vue) => {
