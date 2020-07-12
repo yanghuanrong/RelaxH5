@@ -10,15 +10,16 @@ html {
 
 .editor-toolbar__top {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #FFF;
     height: 50px;
     display: flex;
     border-bottom: 1px solid #f3f6f8;
     justify-content: space-between;
     padding: 0 20px;
+    border-radius: 50px;
 
     .logo {
         width: 35px;
@@ -69,7 +70,6 @@ html {
 
 .editor-page {
     height: inherit;
-    padding-top: 50px;
 }
 
 .page-wrapper {
@@ -82,7 +82,6 @@ html {
         .left-layout-wrap {
             padding: 20px;
         }
-
     }
 
     .editor-toolbar__center {
@@ -93,37 +92,52 @@ html {
     }
 
     .editor-toolbar__right {
-        width: 200px;
+        width: 300px;
+
+        .right-layout-wrap {
+            padding: 20px;
+        }
     }
 
 }
 
 .edit-main {
-    width: 375px;
-    height: 667px;
-    background: #FFF;
-    position: absolute;
-    border-radius: 20px;
-    top: 50px;
-    left: 50%;
-    margin-left: 375px * -0.5;
-    padding-top: 20px;
+    height: 100%;
+    position: relative;
 
     .phone-page {
-        height: 100%;
+        width: 375px;
+        height: 667px;
+        background: #FFF;
+        position: absolute;
+        border-radius: 20px;
+        top: 60px;
+        left: 50%;
+        margin-left: 375px * -0.5;
+        padding-top: 20px;
     }
 
     .phone-wrap.eidtor {
         min-height: 100%;
         overflow: auto;
 
-        [class^=van-row] {
-            
-        }
-
         [class*=van-col] {
             min-height: 30px;
             border: 1px dotted #eee;
+
+            &.edit{
+                position: relative;
+
+                .title{
+                    position: absolute;
+                    top:0;
+                    left:0;
+                    right: 0;
+                    height: 5px;
+                    background-color: fade(#4eb7eb, 10%);
+                    cursor: pointer;
+                }
+            }
         }
     }
 }
