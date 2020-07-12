@@ -8,7 +8,6 @@
             :key="index"
             :is="item2.componentName"
             v-bind="item2"
-            :propsValue="item2.componentName !== 'nested-container' ? item2.propsValue: undefined"
           ></component>
         </template>
       </draggable>

@@ -29,24 +29,23 @@
             <span>下载</span>
           </div>
         </div>
-      </div> -->
+      </div>-->
 
       <div class="phone-page">
-        <div class="phone-wrap eidtor">
-          <draggable
-            group="layouts"
-            :list="list"
-            handle=".draggalbe-handle"
-            :options="{
-        animation: 150,
-        fallbackOnBody: true
-      }"
-          >
-            <template v-for="(item, i) in list">
-              <component :key="'component' + i" :is="item.componentName" v-bind="item"></component>
-            </template>
-          </draggable>
-        </div>
+        <draggable
+          group="layouts"
+          :list="list"
+          handle=".draggalbe-handle"
+          class="phone-wrap eidtor"
+          :options="{
+            animation: 150,
+            fallbackOnBody: true
+          }"
+        >
+          <template v-for="(item, i) in list">
+            <component :key="'component' + i" :is="item.componentName" v-bind="item"></component>
+          </template>
+        </draggable>
       </div>
     </div>
   </div>
@@ -109,7 +108,7 @@ export default {
   },
   watch: {
     list: function(value) {
-      console.log(value);
+      console.table(value);
     }
   }
 };
