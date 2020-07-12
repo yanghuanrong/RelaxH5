@@ -1,43 +1,32 @@
 <template>
-  <div>
-    <div v-for="(item, i) in tasks">
-      <draggable
-        group="layouts"
-        :list="item.tasks"
-        :options="{
-        animation: 150,
-        fallbackOnBody: true,
-        invertSwap: true
-      }"
-      >
-        <template v-for="(items, i) in item.tasks">
+  <van-row>
+    <van-col v-bind="item" :span="item.span" v-for="(item, k) in col" :key="'col' + k">
+      <draggable group="layouts" :list="item.children" :options="{ 
+                            }">
+        <template v-for="(item2,index) in item.children">
+          <component
+            :key="index"
+            :is="item2.componentName"
+            v-bind="item2"
+            :propsValue="item2.componentName !== 'nested-container' ? item2.propsValue: undefined"
+          ></component>
         </template>
-
-          <van-row v-bind="row">
-        <van-col v-bind="colDep" :span="item" v-for="(item, k) in colDep.span" :key="'col' + k">
-            <!-- <component :is="componentName"></component> -->
-          <component :key="'component' + i" :is="items.componentName" v-bind="items"></component>
-
-        </van-col>
-      </van-row>
       </draggable>
-    </div>
-  </div>
+    </van-col>
+  </van-row>
 </template>
 
 <script>
 import draggable from "vuedraggable";
 
 export default {
+  name: "nested-container",
   components: {
     draggable
   },
-  name: "nested-container",
   props: {
-    tasks: Array
+    componentName: String,
+    col: Array
   },
-  created() {
-    console.log(this.tasks);
-  }
 };
 </script>
