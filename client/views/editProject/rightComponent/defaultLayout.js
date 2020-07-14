@@ -23,8 +23,6 @@ data.forEach((item) => {
   })
 })
 
-console.log(layout)
-
 export default {
   layout
 }

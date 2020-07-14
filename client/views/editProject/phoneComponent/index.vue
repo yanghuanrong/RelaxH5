@@ -1,6 +1,9 @@
 <template>
   <div class="editor-toolbar__center">
     <div class="edit-main">
+      <div class="eidtor-code" @click="clickCode">
+        <a-icon type="code" />
+      </div>
       <!-- <div class="editor-toolbar__top">
         <div class="control-bar-wrapper">
           <div class="zoom">
@@ -43,7 +46,12 @@
           }"
         >
           <template v-for="(item, i) in list">
-            <component :key="'component' + i" :is="item.componentName" v-bind="item.componentAttrs">{{item.componentText}}</component>
+            <div :class="{'draggalbe-handle': item.draggalbe}" :key="'component' + i">
+              <component
+                :is="item.componentName"
+                v-bind="item.componentAttrs"
+              >{{item.componentText}}</component>
+            </div>
           </template>
         </draggable>
       </div>
@@ -53,6 +61,7 @@
 
 <script>
 import draggable from "vuedraggable";
+import { conversion } from "@templates/utils";
 
 export default {
   components: {
@@ -60,12 +69,26 @@ export default {
   },
   data() {
     return {
-      list: []
+      list: [
+        {
+          componentName: "van-button",
+          draggalbe: true,
+          componentText: "默认按钮",
+          componentAttrs: {
+            type: "primary"
+          }
+        }
+      ]
     };
   },
   watch: {
     list: function(value) {
-      console.table(value);
+      console.log(value);
+    }
+  },
+  methods: {
+    clickCode() {
+      conversion(this.list);
     }
   }
 };

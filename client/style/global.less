@@ -105,6 +105,24 @@ html {
     height: 100%;
     position: relative;
 
+    .eidtor-code{
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        background-color: #F00;
+        text-align: center;
+        line-height: 30px;
+        border-radius: 100%;
+        left: 10px;
+        top: 10px;
+        cursor: pointer;
+
+        i{
+            color: #FFF;
+            font-size: 18px;
+        }
+    }
+
     .phone-page {
         width: 375px;
         height: 667px;
@@ -123,8 +141,8 @@ html {
         overflow: auto;
 
         [class*=van-col] {
-            min-height: 30px;
             border: 1px dotted #eee;
+            padding: 40px 0;
 
             &.edit{
                 position: relative;

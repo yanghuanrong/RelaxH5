@@ -15,5 +15,6 @@ module.exports = {
 		config.resolve.alias
 			.set('@', path.resolve('client'))
 			.set('@components', path.resolve('components'))
+			.set('@templates', path.resolve('templates'))
 	}
 }
