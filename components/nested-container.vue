@@ -1,14 +1,20 @@
 <template>
   <van-row>
-    <van-col v-bind="item" :class="'edit'" :span="item.span" v-for="(item, k) in col" :key="'col' + k">
+    <van-col
+      v-bind="item"
+      :class="'edit'"
+      :span="item.span"
+      v-for="(item, k) in col"
+      :key="'col' + k"
+    >
       <div class="title draggalbe-handle"></div>
       <draggable group="layouts" :list="item.children">
-        <template v-for="(item2,index) in item.children">
+        <template v-for="(item2,i) in item.children">
           <component
-            :key="index"
+            :key="'component' + i"
             :is="item2.componentName"
-            v-bind="item2"
-          ></component>
+            v-bind="item2.componentAttrs"
+          >{{item2.componentText || ''}}</component>
         </template>
       </draggable>
     </van-col>
@@ -27,6 +33,6 @@ export default {
     componentName: String,
     row: Object,
     col: Array
-  },
+  }
 };
 </script>

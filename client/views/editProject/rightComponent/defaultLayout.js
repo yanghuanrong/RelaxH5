@@ -15,9 +15,11 @@ const data = ['24', '12:12', '8:8:8', '6:6:6:6']
 
 data.forEach((item) => {
   layout.push({
-    name: `布局 ${item}`,
     componentName: "nested-container",
-    col: layoutPlant(item)
+    componentAttrs: {
+      row: {},
+      col: layoutPlant(item)
+    }
   })
 })
 

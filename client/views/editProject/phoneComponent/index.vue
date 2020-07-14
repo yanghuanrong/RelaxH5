@@ -43,7 +43,7 @@
           }"
         >
           <template v-for="(item, i) in list">
-            <component :key="'component' + i" :is="item.componentName" v-bind="item"></component>
+            <component :key="'component' + i" :is="item.componentName" v-bind="item.componentAttrs">{{item.componentText}}</component>
           </template>
         </draggable>
       </div>
