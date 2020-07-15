@@ -2,6 +2,8 @@ const path = require('path')
 
 module.exports = {
 	// 修改 pages 入口
+	publicPath: './',
+  	outputDir: './static',
 	pages: {
 		index: {
 			entry: 'client/main.js', // 入口
