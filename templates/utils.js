@@ -5,36 +5,81 @@ import JSZip from 'jszip'
 import viewTemp from './view'
 
 function conversion(data) {
+    const HTMLDOM = []
 
-    let view = []
+    ComponentToTemplate(data, HTMLDOM)
+
+    const vueTemp = ejs.render(viewTemp.fileTemplates, {
+        element: HTMLDOM
+    })
+
+    console.log(vueTemp)
+    // outExportFileByStr('App.vue', vueTemp)
+}
+
+function ComponentToTemplate(data, HTMLDOM) {
 
     data.forEach((item) => {
-        const componentName = item.componentName.split('-').reverse()[0]
+        // 组件名
+        let componentName = item.componentName.split('-').reverse()[0]
+
+        // 组件数据
         const componentData = {
             attrs: '',
             text: item.componentText
         }
 
+        // 格式化组件标签属性 {key:value} => key="value"
         const attrs = item.componentAttrs
-        Object.keys(attrs).forEach(key => {
-            componentData.attrs += ` ${key}="${attrs[key]}"`
-        })
 
-        console.log(viewTemp)
-        const domCode = ejs.render(viewTemp[componentName], componentData)
+        // 如果是布局组件则需要特殊处理。
+        if (componentName === 'container' || componentName === 'nested-container') {
+            // col组件处理
+            const colTempArray = []
+            attrs.col.forEach((item) => {
+                const colData = {
+                    attrs: '',
+                    element: []
+                }
+                Object.keys(item).forEach(key => {
+                    if (key !== 'children') {
+                        colData.attrs += ` ${key}="${item[key]}"`
+                    }
+                })
 
-        view.push(domCode)
+                // 递归函数
+                if (item.children.length > 0) {
+                    ComponentToTemplate(item.children, colData.element)
+                }
+                
+                const colTemp = ejs.render(viewTemp['col'], colData)
+                colTempArray.push(colTemp)
+            })
+
+            // row组件处理
+            const rowData = {
+                attrs: '',
+                element: colTempArray
+            }
+            Object.keys(attrs.row).forEach(key => {
+                rowData.attrs += ` ${key}="${attrs.row[key]}"`
+            })
+
+            const elementCode = ejs.render(viewTemp['row'], rowData)
+            HTMLDOM.push(elementCode)
+        } else {
+
+            Object.keys(attrs).forEach(key => {
+                componentData.attrs += ` ${key}="${attrs[key]}"`
+            })
+            const elementCode = ejs.render(viewTemp[componentName], componentData)
+            HTMLDOM.push(elementCode)
+        }
     })
-
-    const tempVue = ejs.render(viewTemp.fileTemplates, {
-        code: view
-    })
-
-    console.log(tempVue)
-    outExportFileByStr('App.vue', tempVue)
 }
 
-const outExportFileByStr = (fileName, str) => {
+
+function outExportFileByStr(fileName, str) {
     const VUE_NAME = 'This#is#fileName'
     str = str.replace(VUE_NAME, fileName.replace('.vue', ''))
     // str = str.replace(fileName.replace('.vue',''))

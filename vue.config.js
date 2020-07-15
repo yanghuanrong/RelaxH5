@@ -1,7 +1,6 @@
 const path = require('path')
 
 module.exports = {
-	// 修改 pages 入口
 	productionSourceMap: false,
 	publicPath: './',
 	runtimeCompiler: true,

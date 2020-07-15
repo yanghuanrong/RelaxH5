@@ -144,6 +144,10 @@ html {
         [class*=van-col] {
             border: 1px dotted #eee;
 
+            &:hover{
+                border-color: #4eb7eb;
+            }
+
             &.edit{
                 position: relative;
 
@@ -152,6 +156,10 @@ html {
                     height: 5px;
                     background-color: fade(#4eb7eb, 10%);
                     cursor: pointer;
+
+                    &:hover{
+                        background-color: fade(#4eb7eb, 100%);
+                    }
                 }
             }
         }
@@ -169,16 +177,19 @@ html {
 
     [class*=van-col] {
         color: #fff;
-        padding: 10px 0;
         text-align: center;
         font-size: 16px;
-        cursor: pointer;
-
-        &:nth-child(odd) {
+        
+        .background{
+            padding: 10px 0;
+            cursor: pointer;
+        }
+        
+        &:nth-child(odd) .background{
             background: fade(#4eb7eb, 90%);
         }
 
-        &:nth-child(even) {
+        &:nth-child(even) .background{
             background: fade(#4eb7eb, 70%);
         }
     }

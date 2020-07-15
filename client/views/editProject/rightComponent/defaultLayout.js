@@ -17,7 +17,10 @@ data.forEach((item) => {
   layout.push({
     componentName: "nested-container",
     componentAttrs: {
-      row: {},
+      row: {
+        type: 'flex',
+        gutter: "1"
+      },
       col: layoutPlant(item)
     }
   })
