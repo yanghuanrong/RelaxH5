@@ -7,6 +7,7 @@
             :list="list"
             :options="{sort:false}"
             :group="{ name: 'layouts', pull: 'clone', put: false}"
+            :clone="clone"
           >
             <Container
               v-for="(item, i) in list"
@@ -16,13 +17,16 @@
             />
           </draggable>
         </van-tab>
-        <van-tab title="自定义布局">内容 2</van-tab>
+        <van-tab title="自定义布局">
+          <button @click="test">测试</button>
+        </van-tab>
       </van-tabs>
 
       <draggable
         :list="component"
         :options="{sort:false}"
         :group="{ name: 'layouts', pull: 'clone', put: false}"
+        :clone="clone"
       >
         <template v-for="(item, i) in component">
           <div :key="'component' + i">{{item.componentText}}</div>
@@ -66,9 +70,13 @@ export default {
       layoutTab: 0
     };
   },
-  watch:{
-    list(value){
-      console.log(value, 1)
+  methods: {
+    test(){
+      console.log(this.list)
+    },
+    clone(obj){
+      const newObj = JSON.parse(JSON.stringify(obj))
+      return newObj
     }
   }
 };
