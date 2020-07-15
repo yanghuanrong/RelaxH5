@@ -1,7 +1,9 @@
 const fileTemplates = 
 `<template>
     <div>
-        <%- code %>
+        <%_ code.forEach(function(item){ _%>
+        <%- item %>
+        <%_ }); _%>
     </div>
 </template>
 
@@ -11,10 +13,8 @@ export default {
 }
 </script>
 `
-const button = `<van-button<%-attrs%> > <%=text%> </van-button>
-`
-const tag = `<van-tag<%-attrs%> > <%=text%> </van-tag>
-`
+const button = `<van-button<%-attrs%> ><%=text%></van-button>`
+const tag = `<van-tag<%-attrs%> ><%=text%></van-tag>`
 
 export default {
     fileTemplates,

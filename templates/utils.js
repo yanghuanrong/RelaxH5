@@ -6,7 +6,7 @@ import viewTemp from './view'
 
 function conversion(data) {
 
-    let view = ''
+    let view = []
 
     data.forEach((item) => {
         const componentName = item.componentName.split('-').reverse()[0]
@@ -23,14 +23,15 @@ function conversion(data) {
         console.log(viewTemp)
         const domCode = ejs.render(viewTemp[componentName], componentData)
 
-        view += domCode
+        view.push(domCode)
     })
 
     const tempVue = ejs.render(viewTemp.fileTemplates, {
         code: view
     })
 
-    outExportFileByStr('hha.vue', tempVue)
+    console.log(tempVue)
+    outExportFileByStr('App.vue', tempVue)
 }
 
 const outExportFileByStr = (fileName, str) => {
