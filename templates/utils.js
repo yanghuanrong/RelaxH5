@@ -51,7 +51,7 @@ function ComponentToTemplate(data, HTMLDOM) {
                 if (item.children.length > 0) {
                     ComponentToTemplate(item.children, colData.element)
                 }
-                
+
                 const colTemp = ejs.render(viewTemp['col'], colData)
                 colTempArray.push(colTemp)
             })

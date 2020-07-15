@@ -27,7 +27,7 @@ const col =
         <%_ element.forEach(function(item){ _%>
             <%- item %>
         <%_ }); _%>
-            </van-col>`
+        </van-col>`
 
 export default {
     fileTemplates,

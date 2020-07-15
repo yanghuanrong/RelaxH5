@@ -46,7 +46,7 @@
           }"
         >
           <template v-for="(item, i) in list">
-            <div :class="{'draggalbe-handle': item.draggalbe}" :key="'component' + i">
+            <div :class="{'draggalbe-handle': item.draggalbe}" :key="'component' + i" >
               <component
                 :is="item.componentName"
                 v-bind="item.componentAttrs"
@@ -80,6 +80,9 @@ export default {
   methods: {
     clickCode() {
       conversion(this.list);
+    },
+    checked(i){
+      console.log(i)
     }
   }
 };

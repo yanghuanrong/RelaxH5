@@ -135,32 +135,54 @@ html {
         margin-left: 375px * -0.5;
         overflow: auto;
         box-shadow: 0 0 10px fade(#000, 5%);
+
+        .draggalbe-handle{
+            display: inline-block;
+            position: relative;
+
+            &:hover::after{
+                display: block;
+            }
+
+            &::after{
+                content: "";
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 0;
+                bottom: 0;
+                background: fade(#4eb7eb, 50%);
+                display: none;
+                border: 1px solid #4eb7eb;
+            }
+        }
     }
 
     .phone-wrap.eidtor {
         min-height: 100%;
         overflow: auto;
 
+        .edit{
+            position: relative;
+
+            .title{
+                width: 100%;
+                height: 5px;
+                background-color: fade(#4eb7eb, 10%);
+                display: block;
+                cursor: pointer;
+
+                &:hover{
+                    background-color: fade(#4eb7eb, 100%);
+                }
+            }
+        }
+
         [class*=van-col] {
             border: 1px dotted #eee;
 
             &:hover{
                 border-color: #4eb7eb;
-            }
-
-            &.edit{
-                position: relative;
-
-                .title{
-                    width: 100%;
-                    height: 5px;
-                    background-color: fade(#4eb7eb, 10%);
-                    cursor: pointer;
-
-                    &:hover{
-                        background-color: fade(#4eb7eb, 100%);
-                    }
-                }
             }
         }
     }
@@ -184,7 +206,7 @@ html {
             padding: 10px 0;
             cursor: pointer;
         }
-        
+
         &:nth-child(odd) .background{
             background: fade(#4eb7eb, 90%);
         }

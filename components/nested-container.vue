@@ -1,24 +1,21 @@
 <template>
-  <van-row v-bind="row">
-    <van-col
-      v-bind="item"
-      :class="'edit'"
-      :span="item.span"
-      v-for="(item, k) in col"
-      :key="'col' + k"
-    >
-      <div class="title draggalbe-handle"></div>
-      <draggable group="layouts" style="min-height:30px" :list="item.children">
-        <template v-for="(item2,i) in item.children">
-          <component
-            :key="'component' + i"
-            :is="item2.componentName"
-            v-bind="item2.componentAttrs"
-          >{{item2.componentText || ''}}</component>
-        </template>
-      </draggable>
-    </van-col>
-  </van-row>
+  <div class="edit">
+    <div class="title draggalbe-handle"></div>
+    <van-row v-bind="row">
+      <van-col v-bind="item" :span="item.span" v-for="(item, k) in col" :key="'col' + k">
+        <draggable group="layouts" style="min-height:30px" :list="item.children">
+          <template v-for="(item2,i) in item.children">
+            <div :class="{'draggalbe-handle': item2.draggalbe}" :key="'component' + i" >
+              <component
+                :is="item2.componentName"
+                v-bind="item2.componentAttrs"
+              >{{item2.componentText || ''}}</component>
+            </div>
+          </template>
+        </draggable>
+      </van-col>
+    </van-row>
+  </div>
 </template>
 
 <script>
