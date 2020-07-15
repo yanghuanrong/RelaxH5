@@ -1,5 +1,5 @@
 <template>
-  <van-row v-bind="row">
+  <van-row v-bind="{row}">
     <van-col v-bind="item" :span="item.span" v-for="(item, k) in col" :key="'col' + k"></van-col>
   </van-row>
 </template>
@@ -12,6 +12,9 @@ export default {
     componentName: String,
     col: Array,
     row: Object
+  },
+  created(){
+    console.log(this.row)
   }
 };
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <van-row>
+  <van-row v-bind="row" type="flex">
     <van-col
       v-bind="item"
       :class="'edit'"
@@ -8,7 +8,7 @@
       :key="'col' + k"
     >
       <div class="title draggalbe-handle"></div>
-      <draggable group="layouts" :list="item.children">
+      <draggable group="layouts" style="min-height:30px" :list="item.children">
         <template v-for="(item2,i) in item.children">
           <component
             :key="'component' + i"

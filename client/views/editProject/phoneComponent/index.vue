@@ -69,16 +69,7 @@ export default {
   },
   data() {
     return {
-      list: [
-        {
-          componentName: "van-button",
-          draggalbe: true,
-          componentText: "默认按钮",
-          componentAttrs: {
-            type: "primary"
-          }
-        }
-      ]
+      list: []
     };
   },
   watch: {

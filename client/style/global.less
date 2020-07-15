@@ -110,12 +110,13 @@ html {
         width: 30px;
         height: 30px;
         background-color: #F00;
-        text-align: center;
-        line-height: 30px;
         border-radius: 100%;
         left: 10px;
         top: 10px;
         cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
         i{
             color: #FFF;
@@ -128,12 +129,12 @@ html {
         height: 667px;
         background: #FFF;
         position: absolute;
-        border-radius: 20px;
+        // border-radius: 20px;
         top: 60px;
         left: 50%;
         margin-left: 375px * -0.5;
-        padding-top: 20px;
         overflow: auto;
+        box-shadow: 0 0 10px fade(#000, 5%);
     }
 
     .phone-wrap.eidtor {
@@ -142,16 +143,12 @@ html {
 
         [class*=van-col] {
             border: 1px dotted #eee;
-            padding: 40px 0;
 
             &.edit{
                 position: relative;
 
                 .title{
-                    position: absolute;
-                    top:0;
-                    left:0;
-                    right: 0;
+                    width: 100%;
                     height: 5px;
                     background-color: fade(#4eb7eb, 10%);
                     cursor: pointer;
