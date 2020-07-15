@@ -74,7 +74,7 @@ export default {
   },
   watch: {
     list: function(value) {
-      console.log(value);
+      // console.log(value);
     }
   },
   methods: {

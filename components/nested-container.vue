@@ -1,5 +1,5 @@
 <template>
-  <van-row v-bind="row" type="flex">
+  <van-row type="flex">
     <van-col
       v-bind="item"
       :class="'edit'"

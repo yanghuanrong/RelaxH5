@@ -65,6 +65,11 @@ export default {
       ],
       layoutTab: 0
     };
+  },
+  watch:{
+    list(value){
+      console.log(value, 1)
+    }
   }
 };
 </script>
