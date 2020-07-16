@@ -37,7 +37,7 @@
       <div class="phone-page">
         <draggable
           group="layouts"
-          :list="list"
+          :list="page"
           handle=".draggalbe-handle"
           class="phone-wrap eidtor"
           :options="{
@@ -45,8 +45,12 @@
             fallbackOnBody: true
           }"
         >
-          <template v-for="(item, i) in list">
-            <div :class="{'draggalbe-handle': item.draggalbe}" :key="'component' + i" >
+          <template v-for="(item, i) in page">
+            <div
+              :class="{'draggalbe-handle': item.draggalbe}"
+              :key="'component' + i"
+              @click="checked(item.componentID)"
+            >
               <component
                 :is="item.componentName"
                 v-bind="item.componentAttrs"
@@ -69,20 +73,25 @@ export default {
   },
   data() {
     return {
-      list: []
+      // list: []
     };
   },
-  watch: {
-    list: function(value) {
-      // console.log(value);
+  computed: {
+    page: {
+      get() {
+        return this.$store.state.page;
+      },
+      set(value) {
+        this.$store.commit("updatePage", value);
+      }
     }
   },
   methods: {
     clickCode() {
-      conversion(this.list);
+      conversion(this.page);
     },
-    checked(i){
-      console.log(i)
+    checked(id) {
+      this.$store.commit("checkedComponent", id);
     }
   }
 };

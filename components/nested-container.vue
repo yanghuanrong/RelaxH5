@@ -5,7 +5,7 @@
       <van-col v-bind="item" :span="item.span" v-for="(item, k) in col" :key="'col' + k">
         <draggable group="layouts" style="min-height:30px" :list="item.children">
           <template v-for="(item2,i) in item.children">
-            <div :class="{'draggalbe-handle': item2.draggalbe}" :key="'component' + i" >
+            <div :class="{'draggalbe-handle': item2.draggalbe}" @click.stop="checked(item2.componentID)" :key="'component' + i" >
               <component
                 :is="item2.componentName"
                 v-bind="item2.componentAttrs"
@@ -30,6 +30,11 @@ export default {
     componentName: String,
     row: Object,
     col: Array
+  },
+  methods: {
+    checked(id) {
+      this.$store.commit("checkedComponent", id);
+    }
   }
 };
 </script>

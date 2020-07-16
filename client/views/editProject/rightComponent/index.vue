@@ -7,7 +7,7 @@
             :list="list"
             :options="{sort:false}"
             :group="{ name: 'layouts', pull: 'clone', put: false}"
-            :clone="clone"
+            :clone="cloneLayout"
           >
             <Container
               v-for="(item, i) in list"
@@ -26,7 +26,7 @@
         :list="component"
         :options="{sort:false}"
         :group="{ name: 'layouts', pull: 'clone', put: false}"
-        :clone="clone"
+        :clone="cloneComponent"
       >
         <template v-for="(item, i) in component">
           <div :key="'component' + i">{{item.componentText}}</div>
@@ -74,9 +74,16 @@ export default {
     test(){
       console.log(this.list)
     },
-    clone(obj){
-      const newObj = JSON.parse(JSON.stringify(obj))
-      return newObj
+    cloneComponent(component){
+      const newComponent = JSON.parse(JSON.stringify(component))
+      newComponent.componentID = Math.random().toString(16).substring(2, 15)
+      return newComponent
+    },
+    cloneLayout(container){
+      const newContainer = JSON.parse(JSON.stringify(container))
+      delete newContainer.componentAttrs.row.gutter
+      newContainer.componentID = Math.random().toString(16).substring(2, 15)
+      return newContainer
     }
   }
 };
