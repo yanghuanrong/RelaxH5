@@ -6,27 +6,29 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     page: [],
+    eidtComponent: null,
   },
   mutations: {
     updatePage(state, value) {
       console.log(value)
       state.page = value
     },
-    checkedComponent({page}, id) {
-
-      page.forEach((item) => {
+    checkedComponent({page} , id) {
+      for(let i = 0; i<page.length; i++){
+        const item = page[i]
 
         if(item.componentID === id){
-          // console.log(item)
-          // item.componentText = '123123'
+          this.commit('updateComponent', item)
         } else if( item.componentName === "nested-container" ) {
+          console.log(item.componentName)
           console.log(item.componentAttrs.col)
         }
+      }
 
-        // console.log(item.componentID === id)
-      })
+    },
+    updateComponent(state, component){
+      state.eidtComponent = component
       // console.log(state)
-      // console.log(id)
     }
   },
   actions: {

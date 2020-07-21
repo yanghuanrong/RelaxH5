@@ -18,7 +18,6 @@
           </draggable>
         </van-tab>
         <van-tab title="自定义布局">
-          <button @click="test">测试</button>
         </van-tab>
       </van-tabs>
 
@@ -34,6 +33,23 @@
         </template>
       </draggable>
     </div>
+
+    <a-drawer
+      :title="drawerComponent.componentText"
+      placement="right"
+      :closable="false"
+      :visible="drawerVisible"
+      width="300"
+      :maskStyle="{
+        background: 'rgba(0,0,0, 0.2)'
+      }"
+      @close="drawerClose"
+    >
+      <p>Some contents...</p>
+      <p>Some contents...</p>
+      <p>Some contents...</p>
+    </a-drawer>
+
   </div>
 </template>
 
@@ -67,12 +83,19 @@ export default {
           }
         }
       ],
+      drawerComponent: {},
       layoutTab: 0
     };
   },
+  computed: {
+    drawerVisible(){
+      this.drawerComponent = Object.assign({}, this.$store.state.eidtComponent)
+      return this.$store.state.eidtComponent ? true : false
+    },
+  },
   methods: {
-    test(){
-      console.log(this.list)
+    drawerClose(){
+      this.$store.commit('updateComponent', null)
     },
     cloneComponent(component){
       const newComponent = JSON.parse(JSON.stringify(component))

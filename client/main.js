@@ -5,10 +5,9 @@ import store from './store'
 import "./style/global.less"
 
 /** Ant-design */
-import {Icon} from 'ant-design-vue';
+import Antd from 'ant-design-vue';
 import 'ant-design-vue/dist/antd.css';
-Vue.component(Icon.name, Icon);
-// Vue.use(Antd);
+Vue.use(Antd);
 
 /** Vant */
 import Vant from 'vant';

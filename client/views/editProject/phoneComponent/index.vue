@@ -49,7 +49,7 @@
             <div
               :class="{'draggalbe-handle': item.draggalbe}"
               :key="'component' + i"
-              @click="checked(item.componentID)"
+              @click.stop="checked(item.componentID)"
             >
               <component
                 :is="item.componentName"
