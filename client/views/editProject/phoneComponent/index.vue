@@ -79,7 +79,7 @@ export default {
   computed: {
     page: {
       get() {
-        return this.$store.state.page;
+        return this.$store.state.pageComponent;
       },
       set(value) {
         this.$store.commit("updatePage", value);
