@@ -46,15 +46,16 @@
           }"
         >
           <template v-for="(item, i) in page">
+            <div :key="'component' + i">
             <div
               :class="{'draggalbe-handle': item.draggalbe}"
-              :key="'component' + i"
               @click.stop="checked(item.componentID)"
             >
               <component
                 :is="item.componentName"
                 v-bind="item.componentAttrs"
               >{{item.componentText || item.componentTitle}}</component>
+            </div>
             </div>
           </template>
         </draggable>

@@ -39,11 +39,10 @@
 
     <!-- 编辑组件属性 -->
     <a-drawer
-      :title="drawerComponent.componentTitle"
       placement="right"
       :closable="false"
       :visible="drawerVisible"
-      width="300"
+      width="500"
       :maskStyle="{
         background: 'rgba(0,0,0, 0.2)'
       }"
