@@ -28,14 +28,14 @@
         :clone="cloneComponent"
       >
         <template v-for="(item, i) in component">
-          <div :key="'component' + i">{{item.componentText}}</div>
+          <div :key="'component' + i">{{item.componentTitle}}</div>
           <!-- <component :key="'component' + i" :is="item.componentName" v-bind="item"></component> -->
         </template>
       </draggable>
     </div>
 
     <a-drawer
-      :title="drawerComponent.componentText"
+      :title="drawerComponent.componentTitle"
       placement="right"
       :closable="false"
       :visible="drawerVisible"
@@ -45,7 +45,7 @@
       }"
       @close="drawerClose"
     >
-      <p>Some contents...</p>
+      <p><a-input addon-before="文本值" v-model="drawerComponent.componentText" @blur="saveComponent" /></p>
       <p>Some contents...</p>
       <p>Some contents...</p>
     </a-drawer>
@@ -70,6 +70,7 @@ export default {
           componentName: "van-button",
           draggalbe: true,
           componentText: "默认按钮",
+          componentTitle: "默认按钮",
           componentAttrs: {
             type: "primary"
           }
@@ -78,6 +79,7 @@ export default {
           componentName: "van-tag",
           draggalbe: true,
           componentText: "标签",
+          componentTitle: "标签",
           componentAttrs: {
             type: "danger"
           }
@@ -96,6 +98,9 @@ export default {
   methods: {
     drawerClose(){
       this.$store.commit('updateComponent', null)
+    },
+    saveComponent(){
+      this.$store.commit('saveComponent', this.drawerComponent)
     },
     cloneComponent(component){
       const newComponent = JSON.parse(JSON.stringify(component))

@@ -15,11 +15,34 @@ export default new Vuex.Store({
     },
     checkedComponent({pageComponent} , id) {
 
-      const getDeepComponent = (pageComponent) => {
+      const getDeepComponent = (pageComponent, fn) => {
         for(let i = 0; i<pageComponent.length; i++){
           const item = pageComponent[i]
           if(item.componentID === id){
-            this.commit('updateComponent', item)
+            fn(item)
+            return
+          } else if( item.componentName === "nested-container" ) {
+            item.componentAttrs.col.forEach(({children}) => {
+              if(children.length){
+                getDeepComponent(children, fn)
+              }
+            })
+          }
+        }
+      }
+
+      getDeepComponent(pageComponent, (component) => {
+        this.commit('updateComponent', component)
+      })
+
+    },
+    saveComponent({pageComponent}, component){
+      
+      const getDeepComponent = (pageComponent) => {
+        for(let i = 0; i<pageComponent.length; i++){
+          const item = pageComponent[i]
+          if(item.componentID === component.componentID){
+            pageComponent[i] = Object.assign(item, component)
             return
           } else if( item.componentName === "nested-container" ) {
             item.componentAttrs.col.forEach(({children}) => {
@@ -30,8 +53,8 @@ export default new Vuex.Store({
           }
         }
       }
+
       getDeepComponent(pageComponent)
-      
 
     },
     updateComponent(state, component){
@@ -39,7 +62,9 @@ export default new Vuex.Store({
         return
       }
       state.eidtComponent = component
-    }
+    },
+
+
   },
   actions: {
   },

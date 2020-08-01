@@ -54,7 +54,7 @@
               <component
                 :is="item.componentName"
                 v-bind="item.componentAttrs"
-              >{{item.componentText}}</component>
+              >{{item.componentText || item.componentTitle}}</component>
             </div>
           </template>
         </draggable>
