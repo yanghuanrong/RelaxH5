@@ -1,6 +1,8 @@
 <template>
   <div class="editor-toolbar__right">
     <div class="right-layout-wrap">
+
+      <!-- 布局组件的使用 -->
       <van-tabs v-model="layoutTab">
         <van-tab title="默认布局">
           <draggable
@@ -21,6 +23,7 @@
         </van-tab>
       </van-tabs>
 
+      <!-- 可用的基础组件 -->
       <draggable
         :list="component"
         :options="{sort:false}"
@@ -34,6 +37,7 @@
       </draggable>
     </div>
 
+    <!-- 编辑组件属性 -->
     <a-drawer
       :title="drawerComponent.componentTitle"
       placement="right"
@@ -45,9 +49,7 @@
       }"
       @close="drawerClose"
     >
-      <p><a-input addon-before="文本值" v-model="drawerComponent.componentText" @blur="saveComponent" /></p>
-      <p>Some contents...</p>
-      <p>Some contents...</p>
+      <component v-if="drawerComponent.componentName" :is="'edit' + drawerComponent.componentName" :drawerComponent="drawerComponent"></component>
     </a-drawer>
 
   </div>
@@ -69,8 +71,8 @@ export default {
         {
           componentName: "van-button",
           draggalbe: true,
-          componentText: "默认按钮",
-          componentTitle: "默认按钮",
+          componentText: "按钮",
+          componentTitle: "按钮",
           componentAttrs: {
             type: "primary"
           }
@@ -98,9 +100,6 @@ export default {
   methods: {
     drawerClose(){
       this.$store.commit('updateComponent', null)
-    },
-    saveComponent(){
-      this.$store.commit('saveComponent', this.drawerComponent)
     },
     cloneComponent(component){
       const newComponent = JSON.parse(JSON.stringify(component))

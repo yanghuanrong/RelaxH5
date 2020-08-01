@@ -1,9 +1,13 @@
 import Container from './container'
 import NestedContainer from './nested-container'
+import EditButton from './edit-button'
+import EditTag from './edit-tag'
 
 const components = {
     Container,
     NestedContainer,
+    EditButton,
+    EditTag
 }
 
 const install = (Vue) => {

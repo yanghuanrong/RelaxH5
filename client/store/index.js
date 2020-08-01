@@ -3,6 +3,22 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
+const getDeepComponent = (pageComponent, id, callback) => {
+  for(let i = 0; i<pageComponent.length; i++){
+    const item = pageComponent[i]
+    if(item.componentID === id){
+      callback(item)
+      return
+    } else if( item.componentName === "nested-container" ) {
+      item.componentAttrs.col.forEach(({children}) => {
+        if(children.length){
+          getDeepComponent(children, id, callback)
+        }
+      })
+    }
+  }
+}
+
 export default new Vuex.Store({
   state: {
     pageComponent: [],
@@ -14,47 +30,15 @@ export default new Vuex.Store({
       state.pageComponent = value
     },
     checkedComponent({pageComponent} , id) {
-
-      const getDeepComponent = (pageComponent, fn) => {
-        for(let i = 0; i<pageComponent.length; i++){
-          const item = pageComponent[i]
-          if(item.componentID === id){
-            fn(item)
-            return
-          } else if( item.componentName === "nested-container" ) {
-            item.componentAttrs.col.forEach(({children}) => {
-              if(children.length){
-                getDeepComponent(children, fn)
-              }
-            })
-          }
-        }
-      }
-
-      getDeepComponent(pageComponent, (component) => {
+      getDeepComponent(pageComponent, id, (component) => {
         this.commit('updateComponent', component)
       })
 
     },
     saveComponent({pageComponent}, component){
-      
-      const getDeepComponent = (pageComponent) => {
-        for(let i = 0; i<pageComponent.length; i++){
-          const item = pageComponent[i]
-          if(item.componentID === component.componentID){
-            pageComponent[i] = Object.assign(item, component)
-            return
-          } else if( item.componentName === "nested-container" ) {
-            item.componentAttrs.col.forEach(({children}) => {
-              if(children.length){
-                getDeepComponent(children)
-              }
-            })
-          }
-        }
-      }
-
-      getDeepComponent(pageComponent)
+      getDeepComponent(pageComponent, component.componentID, (oldComponent) => {
+        oldComponent = Object.assign(oldComponent, component)
+      })
 
     },
     updateComponent(state, component){
