@@ -86,13 +86,16 @@ export default {
     this.component = this.drawerComponent;
     console.log(this.component)
 
-    const element = document.querySelector(`[data-id="${this.component.componentID}"]`)
+   
+  },
+  mounted(){
+    setTimeout(() => {
+const element = document.querySelector(`[data-id="${this.component.componentID}"]`)
     console.dir(element)
     if(!element) return
     this.$set(this.componentStyle, 'width', element.offsetWidth)
     this.$set(this.componentStyle, 'height', element.offsetHeight)
-  },
-  mounted(){
+    }, 1000)
     
   },
   methods: {

@@ -8,6 +8,7 @@
             <div :class="{'draggalbe-handle': item2.draggalbe}" @click.stop="checked(item2.componentID)" :key="'component' + i" >
               <component
                 :is="item2.componentName"
+                :data-id="item2.componentID"
                 v-bind="item2.componentAttrs"
               >{{item2.componentText || ''}}</component>
             </div>
