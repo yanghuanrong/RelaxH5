@@ -18,7 +18,7 @@ module.exports = {
 		// @ 默认指向 src 目录，改成 client
 		config.resolve.alias
 			.set('@', path.resolve('client'))
-			.set('@components', path.resolve('components'))
+			.set('@components', path.resolve('client/components'))
 			.set('@templates', path.resolve('templates'))
 	}
 }
