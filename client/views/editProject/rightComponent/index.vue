@@ -73,7 +73,7 @@ export default {
           componentText: "按钮",
           componentTitle: "按钮",
           componentAttrs: {
-            type: "primary"
+            type: "primary",
           }
         },
         {

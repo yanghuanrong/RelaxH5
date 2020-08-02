@@ -70,7 +70,15 @@ function ComponentToTemplate(data, HTMLDOM) {
         } else {
 
             Object.keys(attrs).forEach(key => {
-                componentData.attrs += ` ${key}="${attrs[key]}"`
+                let value = attrs[key]
+                if(key === 'style' && typeof value === 'object'){
+                    let val = ''
+                    for(let k in value){
+                        val += `${k}:${value[k]}; `
+                    }
+                    value = val
+                }
+                componentData.attrs += ` ${key}="${value}"`
             })
             const elementCode = ejs.render(viewTemp[componentName], componentData)
             HTMLDOM.push(elementCode)

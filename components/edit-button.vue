@@ -2,7 +2,7 @@
   <div>
     <a-tabs>
       <a-tab-pane key="1" tab="组件属性">
-        <a-form layout="horizontal" labelAlign="right" :label-col="{ span: 12 }" :wrapper-col="{ span: 12 }"  hide-required-mark>
+        <a-form hide-required-mark>
           <a-row :gutter="16">
             <a-col :span="12">
               <a-form-item label="文本值">
@@ -31,32 +31,33 @@
         </a-form>
       </a-tab-pane>
       <a-tab-pane key="2" tab="样式属性">
-        <a-form layout="horizontal" labelAlign="right" :label-col="{ width: 40 }" hide-required-mark>
+        <a-form hide-required-mark>
           <a-row :gutter="16">
             <a-col :span="8">
               <a-form-item label="宽度">
-                <a-input-number id="inputNumber" v-model="componentStyle.width" @change="onChange" />
+                <a-input-number
+                  id="inputNumber"
+                  :min="1"
+                  v-model="componentStyle.width"
+                  @change="onChange"
+                />
               </a-form-item>
             </a-col>
             <a-col :span="8">
               <a-form-item label="高度">
-                <a-input-number id="inputNumber" v-model="componentStyle.height" @change="onChange" />
+                <a-input-number
+                  id="inputNumber"
+                  :min="1"
+                  v-model="componentStyle.height"
+                  @change="onChange"
+                />
               </a-form-item>
             </a-col>
           </a-row>
           <a-row :gutter="16">
             <a-col :span="24">
-              <a-form-item label="Description">
-                <a-textarea
-                  v-decorator="[
-                  'description',
-                  {
-                    rules: [{ required: true, message: 'Please enter url description' }],
-                  },
-                ]"
-                  :rows="4"
-                  placeholder="please enter url description"
-                />
+              <a-form-item label="样式配置">
+                <a-textarea :rows="4" v-model="styleTextarea" placeholder="please enter url description" />
               </a-form-item>
             </a-col>
           </a-row>
@@ -77,20 +78,40 @@ export default {
   data() {
     return {
       component: {},
-      componentStyle: {
-        width: 0
-      }
+      componentStyle: {},
+      styleTextarea: '',
     };
   },
   created() {
     this.component = this.drawerComponent;
+    console.log(this.component)
+
+    const element = document.querySelector(`[data-id="${this.component.componentID}"]`)
+    console.dir(element)
+    if(!element) return
+    this.$set(this.componentStyle, 'width', element.offsetWidth)
+    this.$set(this.componentStyle, 'height', element.offsetHeight)
+  },
+  mounted(){
+    
   },
   methods: {
     saveComponent() {
       this.$store.commit("saveComponent", this.component);
     },
     onChange(value) {
-      console.log("changed", value);
+      const oldStyle = this.componentStyle
+      const newStyle = {}
+      Object.keys(oldStyle).forEach((key) => {
+        if(oldStyle[key]){
+          // newStyle[key] = oldStyle[key] + 'px'
+          this.$set(newStyle, key, oldStyle[key] + 'px')
+        }
+      })
+      this.styleTextarea = JSON.stringify(newStyle, null, 2)
+      this.$set(this.component.componentAttrs, 'style', newStyle)
+      console.log(this.component.componentAttrs)
+      this.saveComponent()
     }
   }
 };

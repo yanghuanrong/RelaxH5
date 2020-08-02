@@ -54,6 +54,7 @@
               <component
                 :is="item.componentName"
                 v-bind="item.componentAttrs"
+                :data-id="item.componentID"
               >{{item.componentText || item.componentTitle}}</component>
             </div>
             </div>
