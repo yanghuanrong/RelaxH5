@@ -26,6 +26,24 @@ data.forEach((item) => {
   })
 })
 
+const component = [
+  {
+    componentName: "van-button",
+    draggalbe: true,
+    componentText: "按钮",
+    componentTitle: "按钮",
+    componentAttrs: {}
+  },
+  {
+    componentName: "van-tag",
+    draggalbe: true,
+    componentText: "标签",
+    componentTitle: "标签",
+    componentAttrs: {}
+  },
+]
+
 export default {
-  layout
+  layout,
+  component
 }

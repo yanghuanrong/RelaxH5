@@ -1,14 +1,12 @@
-import Container from './container'
-import NestedContainer from './nested-container'
-import EditButton from './edit-button'
-import EditTag from './edit-tag'
+import editComponent from './editComponent'
+import groupComponent from './groupComponent'
 
 const components = {
-    Container,
-    NestedContainer,
-    EditButton,
-    EditTag
+    ...groupComponent,
+    ...editComponent
 }
+
+console.log(groupComponent)
 
 const install = (Vue) => {
     Object.keys(components).map((key) => {

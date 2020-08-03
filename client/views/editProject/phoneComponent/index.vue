@@ -35,7 +35,17 @@
       </div>-->
 
       <div class="phone-page">
-        <draggable
+        <draggable-view
+          handle=".draggalbe-handle"
+          class="phone-wrap eidtor"
+          :options="{
+            animation: 150,
+            fallbackOnBody: true
+          }"
+          :list="page"
+        />
+
+        <!-- <draggable
           group="layouts"
           :list="page"
           handle=".draggalbe-handle"
@@ -59,7 +69,7 @@
             </div>
             </div>
           </template>
-        </draggable>
+        </draggable>-->
       </div>
     </div>
   </div>
@@ -92,9 +102,7 @@ export default {
     clickCode() {
       conversion(this.page);
     },
-    checked(id) {
-      this.$store.commit("checkedComponent", id);
-    }
+    
   }
 };
 </script>

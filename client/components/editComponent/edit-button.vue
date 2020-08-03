@@ -57,7 +57,11 @@
           <a-row :gutter="16">
             <a-col :span="24">
               <a-form-item label="样式配置">
-                <a-textarea :rows="4" v-model="styleTextarea" placeholder="please enter url description" />
+                <a-textarea
+                  :rows="4"
+                  v-model="styleTextarea"
+                  placeholder="please enter url description"
+                />
               </a-form-item>
             </a-col>
           </a-row>
@@ -79,42 +83,34 @@ export default {
     return {
       component: {},
       componentStyle: {},
-      styleTextarea: '',
+      styleTextarea: ""
     };
   },
   created() {
     this.component = this.drawerComponent;
-    console.log(this.component)
-
-   
+    const element = document.querySelector(
+      `[data-id="${this.component.componentID}"]`
+    );
+    if (!element) return;
+    this.$set(this.componentStyle, "width", element.offsetWidth);
+    this.$set(this.componentStyle, "height", element.offsetHeight);
   },
-  mounted(){
-    setTimeout(() => {
-const element = document.querySelector(`[data-id="${this.component.componentID}"]`)
-    console.dir(element)
-    if(!element) return
-    this.$set(this.componentStyle, 'width', element.offsetWidth)
-    this.$set(this.componentStyle, 'height', element.offsetHeight)
-    }, 1000)
-    
-  },
+  mounted() {},
   methods: {
     saveComponent() {
       this.$store.commit("saveComponent", this.component);
     },
     onChange(value) {
-      const oldStyle = this.componentStyle
-      const newStyle = {}
-      Object.keys(oldStyle).forEach((key) => {
-        if(oldStyle[key]){
-          // newStyle[key] = oldStyle[key] + 'px'
-          this.$set(newStyle, key, oldStyle[key] + 'px')
+      const oldStyle = this.componentStyle;
+      const newStyle = {};
+      Object.keys(oldStyle).forEach(key => {
+        if (oldStyle[key]) {
+          this.$set(newStyle, key, oldStyle[key] + "px");
         }
-      })
-      this.styleTextarea = JSON.stringify(newStyle, null, 2)
-      this.$set(this.component.componentAttrs, 'style', newStyle)
-      console.log(this.component.componentAttrs)
-      this.saveComponent()
+      });
+      this.styleTextarea = JSON.stringify(newStyle, null, 2);
+      this.$set(this.component.componentAttrs, "style", newStyle);
+      this.saveComponent();
     }
   }
 };

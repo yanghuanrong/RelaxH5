@@ -3,7 +3,8 @@
     <div class="title draggalbe-handle"></div>
     <van-row v-bind="row">
       <van-col v-bind="item" :span="item.span" v-for="(item, k) in col" :key="'col' + k">
-        <draggable group="layouts" style="min-height:30px" :list="item.children">
+
+        <!-- <draggable group="layouts" style="min-height:30px" :list="item.children">
           <template v-for="(item2,i) in item.children">
             <div :class="{'draggalbe-handle': item2.draggalbe}" @click.stop="checked(item2.componentID)" :key="'component' + i" >
               <component
@@ -13,7 +14,10 @@
               >{{item2.componentText || ''}}</component>
             </div>
           </template>
-        </draggable>
+        </draggable> -->
+
+        <draggable-view  style="min-height:30px" :list="item.children"/>
+
       </van-col>
     </van-row>
   </div>

@@ -4,6 +4,8 @@ import JSZip from 'jszip'
 
 import viewTemp from './view'
 
+const LAYOUT = 'nested-container'
+
 function conversion(data) {
     const HTMLDOM = []
 
@@ -33,7 +35,7 @@ function ComponentToTemplate(data, HTMLDOM) {
         const attrs = item.componentAttrs
 
         // 如果是布局组件则需要特殊处理。
-        if (componentName === 'container' || componentName === 'nested-container') {
+        if (componentName === 'container' || componentName === LAYOUT) {
             // col组件处理
             const colTempArray = []
             attrs.col.forEach((item) => {

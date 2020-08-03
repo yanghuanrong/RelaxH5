@@ -57,7 +57,7 @@
 
 <script>
 import draggable from "vuedraggable";
-import defaultLayout from "./defaultLayout";
+import components from "./mobileComponent";
 
 export default {
   components: {
@@ -65,27 +65,8 @@ export default {
   },
   data() {
     return {
-      list: defaultLayout.layout,
-      component: [
-        {
-          componentName: "van-button",
-          draggalbe: true,
-          componentText: "按钮",
-          componentTitle: "按钮",
-          componentAttrs: {
-            type: "primary",
-          }
-        },
-        {
-          componentName: "van-tag",
-          draggalbe: true,
-          componentText: "标签",
-          componentTitle: "标签",
-          componentAttrs: {
-            type: "danger"
-          }
-        }
-      ],
+      list: components.layout,
+      component: components.component,
       drawerComponent: {},
       layoutTab: 0
     };
