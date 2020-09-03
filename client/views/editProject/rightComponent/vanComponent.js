@@ -49,7 +49,10 @@ const component = [
     componentText: "轮播",
     componentTitle: "轮播",
     componentAttrs: {
-      images: ['https://img.yzcdn.cn/vant/apple-2.jpg']
+      style: {
+        width: '100%'
+      },
+      images: ['https://img.yzcdn.cn/vant/apple-2.jpg', 'https://img.yzcdn.cn/vant/apple-3.jpg', 'http://47.104.247.183:4000/upload_static/images/1575343136136.jpg']
     }
   },
 ]

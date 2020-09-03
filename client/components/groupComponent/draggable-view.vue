@@ -1,14 +1,13 @@
 <template>
   <draggable group="layouts" :list="list">
     <template v-for="(item, i) in list">
-      <div :key="'component' + i" style="width: 100%">
-        <div :class="{'draggalbe-handle': item.draggalbe}" style="width: 100%" @click.stop="checked(item.componentID)">
+      <div :key="'component' + i" @click.stop="checked(item.componentID)">
           <component
+            :class="{'draggalbe-handle': item.draggalbe}"
             :is="item.componentName"
             v-bind="item.componentAttrs"
             :data-id="item.componentID"
           >{{item.componentText || item.componentTitle}}</component>
-        </div>
       </div>
     </template>
   </draggable>

@@ -137,7 +137,6 @@ html {
         box-shadow: 0 0 10px fade(#000, 5%);
 
         .draggalbe-handle{
-            display: inline-block;
             position: relative;
 
             &:hover::after{
@@ -217,11 +216,13 @@ html {
     }
 }
 
-
 .my-swipe .van-swipe-item {
     color: #fff;
     font-size: 20px;
-    line-height: 150px;
     text-align: center;
     background-color: #39a9ed;
-  }
+
+    .van-image{
+        display: block;
+    }
+}
