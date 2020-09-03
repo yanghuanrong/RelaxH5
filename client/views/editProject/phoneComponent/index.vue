@@ -45,32 +45,6 @@
           }"
           :list="page"
         />
-
-        <!-- <draggable
-          group="layouts"
-          :list="page"
-          handle=".draggalbe-handle"
-          class="phone-wrap eidtor"
-          :options="{
-            animation: 150,
-            fallbackOnBody: true
-          }"
-        >
-          <template v-for="(item, i) in page">
-            <div :key="'component' + i">
-            <div
-              :class="{'draggalbe-handle': item.draggalbe}"
-              @click.stop="checked(item.componentID)"
-            >
-              <component
-                :is="item.componentName"
-                v-bind="item.componentAttrs"
-                :data-id="item.componentID"
-              >{{item.componentText || item.componentTitle}}</component>
-            </div>
-            </div>
-          </template>
-        </draggable>-->
       </div>
     </div>
   </div>
@@ -87,7 +61,13 @@ export default {
   data() {
     return {
       // list: []
+      test: false
     };
+  },
+  mounted(){
+    setTimeout(() => {
+      this.test = true
+    }, 2000)
   },
   computed: {
     page: {

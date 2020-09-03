@@ -32,7 +32,9 @@ const component = [
     draggalbe: true,
     componentText: "按钮",
     componentTitle: "按钮",
-    componentAttrs: {}
+    componentAttrs: {
+      type: 'default'
+    }
   },
   {
     componentName: "van-tag",
@@ -40,6 +42,15 @@ const component = [
     componentText: "标签",
     componentTitle: "标签",
     componentAttrs: {}
+  },
+  {
+    componentName: "Swiper",
+    draggalbe: true,
+    componentText: "轮播",
+    componentTitle: "轮播",
+    componentAttrs: {
+      images: ['https://img.yzcdn.cn/vant/apple-2.jpg']
+    }
   },
 ]
 

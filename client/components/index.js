@@ -1,9 +1,7 @@
-import editComponent from './editComponent'
 import groupComponent from './groupComponent'
 
 const components = {
     ...groupComponent,
-    ...editComponent
 }
 
 console.log(groupComponent)

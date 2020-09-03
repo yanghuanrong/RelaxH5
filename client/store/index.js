@@ -21,7 +21,24 @@ const getDeepComponent = (pageComponent, id, callback) => {
 
 export default new Vuex.Store({
   state: {
-    pageComponent: [],
+    pageComponent: [
+      {
+        componentName: "Swiper",
+        draggalbe: true,
+        componentText: "轮播",
+        componentTitle: "轮播",
+        componentAttrs: {
+          images: ['https://img.yzcdn.cn/vant/apple-2.jpg']
+        }
+      },
+      {
+        componentName: "van-tag",
+        draggalbe: true,
+        componentText: "标签",
+        componentTitle: "标签",
+        componentAttrs: {}
+      },
+    ],
     eidtComponent: null,
   },
   mutations: {

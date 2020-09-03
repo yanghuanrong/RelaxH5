@@ -1,7 +1,7 @@
 <template>
   <div>
     <p>
-      <a-input addon-before="文本值" v-model="component.componentText" @blur="saveComponent" />
+      <Input addon-before="文本值" v-model="component.componentText" @blur="saveComponent" />
     </p>
   </div>
 </template>

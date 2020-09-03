@@ -2,8 +2,8 @@
   <div class="editor-toolbar__right">
     <div class="right-layout-wrap">
       <!-- 布局组件的使用 -->
-      <van-tabs v-model="layoutTab">
-        <van-tab title="默认布局">
+      <Tabs v-model="layoutTab">
+        <TabPane label="默认布局">
           <draggable
             :list="list"
             :options="{sort:false}"
@@ -17,9 +17,9 @@
               class="left-layout-grid"
             />
           </draggable>
-        </van-tab>
-        <van-tab title="自定义布局"></van-tab>
-      </van-tabs>
+        </TabPane>
+        <TabPane label="自定义布局"></TabPane>
+      </Tabs>
 
       <!-- 可用的基础组件 -->
       <draggable
@@ -35,21 +35,8 @@
       </draggable>
     </div>
 
-    <!-- 编辑组件属性 -->
-    <!-- <a-drawer
-      placement="right"
-      :closable="false"
-      :visible="drawerVisible"
-      width="500"
-      :maskStyle="{
-        background: 'rgba(0,0,0, 0.2)'
-      }"
-      @close="drawerClose"
-    >
-      <component v-if="drawerComponent.componentName" :is="'edit' + drawerComponent.componentName" :drawerComponent="drawerComponent"></component>
-    </a-drawer>-->
     <Drawer
-      width="500"
+      width="400"
       :maskStyle="{
         background: 'rgba(0,0,0, 0.2)'
       }"
@@ -68,11 +55,15 @@
 
 <script>
 import draggable from "vuedraggable";
-import components from "./mobileComponent";
+import components from "./vanComponent";
+import editComponent from "./component"
+
+console.log(editComponent)
 
 export default {
   components: {
     draggable,
+    ...editComponent
   },
   data() {
     return {
