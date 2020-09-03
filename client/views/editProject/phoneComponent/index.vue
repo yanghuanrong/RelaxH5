@@ -2,7 +2,8 @@
   <div class="editor-toolbar__center">
     <div class="edit-main">
       <div class="eidtor-code" @click="clickCode">
-        <a-icon type="code" />
+        <!-- <a-icon type="code" /> -->
+        <Icon type="md-add" />
       </div>
       <!-- <div class="editor-toolbar__top">
         <div class="control-bar-wrapper">

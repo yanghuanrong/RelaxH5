@@ -4,10 +4,12 @@ import router from './router'
 import store from './store'
 import "./style/global.less"
 
-/** Ant-design */
-import Antd from 'ant-design-vue';
-import 'ant-design-vue/dist/antd.css';
-Vue.use(Antd);
+/** view-design */
+import ViewUI from 'view-design';
+import 'view-design/dist/styles/iview.css';
+Vue.use(ViewUI, {
+  transfer: true,
+});
 
 /** Vant */
 import Vant from 'vant';

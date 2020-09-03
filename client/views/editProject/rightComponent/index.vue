@@ -1,7 +1,6 @@
 <template>
   <div class="editor-toolbar__right">
     <div class="right-layout-wrap">
-
       <!-- 布局组件的使用 -->
       <van-tabs v-model="layoutTab">
         <van-tab title="默认布局">
@@ -19,8 +18,7 @@
             />
           </draggable>
         </van-tab>
-        <van-tab title="自定义布局">
-        </van-tab>
+        <van-tab title="自定义布局"></van-tab>
       </van-tabs>
 
       <!-- 可用的基础组件 -->
@@ -38,7 +36,7 @@
     </div>
 
     <!-- 编辑组件属性 -->
-    <a-drawer
+    <!-- <a-drawer
       placement="right"
       :closable="false"
       :visible="drawerVisible"
@@ -49,8 +47,21 @@
       @close="drawerClose"
     >
       <component v-if="drawerComponent.componentName" :is="'edit' + drawerComponent.componentName" :drawerComponent="drawerComponent"></component>
-    </a-drawer>
-
+    </a-drawer>-->
+    <Drawer
+      width="500"
+      :maskStyle="{
+        background: 'rgba(0,0,0, 0.2)'
+      }"
+      :closable="false"
+      v-model="drawerVisible"
+    >
+      <component
+        v-if="drawerComponent.componentName"
+        :is="'edit' + drawerComponent.componentName"
+        :drawerComponent="drawerComponent"
+      ></component>
+    </Drawer>
   </div>
 </template>
 
@@ -61,37 +72,39 @@ import components from "./mobileComponent";
 
 export default {
   components: {
-    draggable
+    draggable,
   },
   data() {
     return {
       list: components.layout,
       component: components.component,
       drawerComponent: {},
-      layoutTab: 0
+      layoutTab: 0,
     };
   },
   computed: {
-    drawerVisible(){
-      this.drawerComponent = Object.assign({}, this.$store.state.eidtComponent)
-      return this.$store.state.eidtComponent ? true : false
+    drawerVisible: {
+      get(){
+        this.drawerComponent = Object.assign({}, this.$store.state.eidtComponent);
+        return this.$store.state.eidtComponent ? true : false;
+      },
+      set(val){
+        this.$store.commit("updateComponent", null);
+      }
     },
   },
   methods: {
-    drawerClose(){
-      this.$store.commit('updateComponent', null)
+    cloneComponent(component) {
+      const newComponent = JSON.parse(JSON.stringify(component));
+      newComponent.componentID = Math.random().toString(16).substring(2, 15);
+      return newComponent;
     },
-    cloneComponent(component){
-      const newComponent = JSON.parse(JSON.stringify(component))
-      newComponent.componentID = Math.random().toString(16).substring(2, 15)
-      return newComponent
+    cloneLayout(container) {
+      const newContainer = JSON.parse(JSON.stringify(container));
+      delete newContainer.componentAttrs.row.gutter;
+      newContainer.componentID = Math.random().toString(16).substring(2, 15);
+      return newContainer;
     },
-    cloneLayout(container){
-      const newContainer = JSON.parse(JSON.stringify(container))
-      delete newContainer.componentAttrs.row.gutter
-      newContainer.componentID = Math.random().toString(16).substring(2, 15)
-      return newContainer
-    }
-  }
+  },
 };
 </script>

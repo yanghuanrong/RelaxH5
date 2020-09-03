@@ -24,13 +24,9 @@
 </template>
 
 <script>
-import draggable from "vuedraggable";
 
 export default {
   name: "nested-container",
-  components: {
-    draggable
-  },
   props: {
     componentName: String,
     row: Object,
