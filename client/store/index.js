@@ -26,7 +26,6 @@ export default new Vuex.Store({
   },
   mutations: {
     updatePage(state, value) {
-      console.log(value)
       state.pageComponent = value
     },
     checkedComponent({pageComponent} , id) {

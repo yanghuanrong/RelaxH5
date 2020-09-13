@@ -52,6 +52,9 @@ const component = [
       style: {
         width: '100%'
       },
+      height: 200,
+      loop: true,
+      autoplay: 3,
       images: ['https://img.yzcdn.cn/vant/apple-2.jpg', 'https://img.yzcdn.cn/vant/apple-3.jpg', 'http://47.104.247.183:4000/upload_static/images/1575343136136.jpg']
     }
   },

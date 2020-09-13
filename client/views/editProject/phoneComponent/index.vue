@@ -61,20 +61,16 @@ export default {
   data() {
     return {
       // list: []
-      test: false
     };
-  },
-  mounted(){
-    setTimeout(() => {
-      this.test = true
-    }, 2000)
   },
   computed: {
     page: {
       get() {
+        console.log(this.$store.state.pageComponent)
         return this.$store.state.pageComponent;
       },
       set(value) {
+        console.log(11111)
         this.$store.commit("updatePage", value);
       }
     }

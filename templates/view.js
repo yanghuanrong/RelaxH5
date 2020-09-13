@@ -1,3 +1,8 @@
+/**
+ * 此处的变量名对应组件名称
+ * 如果是van的组件会选取van-后面的组件名称
+ */
+
 const fileTemplates = 
 `<template>
     <div>
@@ -9,7 +14,11 @@ const fileTemplates =
 
 <script>
 export default {
+    data(){
+        return {
 
+        }
+    }
 }
 </script>
 `
@@ -29,10 +38,19 @@ const col =
         <%_ }); _%>
         </van-col>`
 
+const Swiper = `
+    <van-swipe class="my-swipe" :autoplay="autoplay * 1000" indicator-color="white">
+        <van-swipe-item v-for="(item, i) in images" :key="i">
+            <van-image :height="height" fit="cover" :src="item" />
+        </van-swipe-item>
+    </van-swipe>
+`
+
 export default {
     fileTemplates,
     button,
     tag,
     row,
-    col
+    col,
+    Swiper,
 }

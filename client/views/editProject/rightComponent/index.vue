@@ -2,7 +2,7 @@
   <div class="editor-toolbar__right">
     <div class="right-layout-wrap">
       <!-- 布局组件的使用 -->
-      <Tabs v-model="layoutTab">
+      <Tabs>
         <TabPane label="默认布局">
           <draggable
             :list="list"
@@ -58,8 +58,6 @@ import draggable from "vuedraggable";
 import components from "./vanComponent";
 import editComponent from "./component"
 
-console.log(editComponent)
-
 export default {
   components: {
     draggable,
@@ -70,7 +68,6 @@ export default {
       list: components.layout,
       component: components.component,
       drawerComponent: {},
-      layoutTab: 0,
     };
   },
   computed: {

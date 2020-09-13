@@ -30,7 +30,7 @@ export default {
   props: {
     componentName: String,
     row: Object,
-    col: Array
+    col: Array,
   },
   methods: {
     checked(id) {

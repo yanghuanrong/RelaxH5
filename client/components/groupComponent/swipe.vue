@@ -1,7 +1,7 @@
 <template>
-  <van-swipe class="my-swipe" :autoplay="3000" indicator-color="white">
+  <van-swipe class="my-swipe" :autoplay="autoplay * 1000" indicator-color="white">
     <van-swipe-item v-for="(item, i) in images" :key="i">
-      <van-image width="100%" height="200" fit="cover" :src="item" />
+      <van-image :height="height" fit="cover" :src="item" />
     </van-swipe-item>
   </van-swipe>
 </template>
@@ -11,9 +11,12 @@ export default {
   name: "Swiper",
   props: {
     images: Array,
+    height: Number,
+    autoplay: Number,
+    'data-id': String
   },
   created(){
-    console.log(this.images)
+    // console.log(this.$store.state.pageComponent)
   }
 };
 </script>

@@ -4,8 +4,6 @@ const components = {
     ...groupComponent,
 }
 
-console.log(groupComponent)
-
 const install = (Vue) => {
     Object.keys(components).map((key) => {
         const component = components[key]
