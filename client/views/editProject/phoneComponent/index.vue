@@ -66,11 +66,9 @@ export default {
   computed: {
     page: {
       get() {
-        console.log(this.$store.state.pageComponent)
         return this.$store.state.pageComponent;
       },
       set(value) {
-        console.log(11111)
         this.$store.commit("updatePage", value);
       }
     }

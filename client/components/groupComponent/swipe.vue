@@ -13,14 +13,6 @@ export default {
     images: Array,
     height: Number,
     autoplay: Number,
-    'data-id': String
   },
-  created(){
-    // console.log(this.$store.state.pageComponent)
-  }
 };
 </script>
-
-<style lang="less" scope="this api replaced by slot-scope in 2.5.0+">
-
-</style>

@@ -39,10 +39,12 @@ const col =
         </van-col>`
 
 const Swiper = `
-    <van-swipe class="my-swipe" :autoplay="autoplay * 1000" indicator-color="white">
-        <van-swipe-item v-for="(item, i) in images" :key="i">
-            <van-image :height="height" fit="cover" :src="item" />
-        </van-swipe-item>
+    <van-swipe :autoplay="<%= autoplay * 1000 %>" indicator-color="white">
+        <%_ images.forEach(function(item){ _%>
+            <van-swipe-item>
+                <van-image :height="<%= height %>" fit="cover" src="<%- item %>" />
+            </van-swipe-item>
+        <%_ }); _%>
     </van-swipe>
 `
 

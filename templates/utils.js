@@ -3,14 +3,14 @@ import FileSaver from "file-saver";
 import JSZip from 'jszip'
 
 import viewTemp from './view'
+import NameGetTemplate from './manage'
 
-const LAYOUT = 'nested-container'
-
+// 导出单文件
 function conversion(data) {
     const HTMLDOM = []
 
     ComponentToTemplate(data, HTMLDOM)
-
+    console.log(HTMLDOM)
     const vueTemp = ejs.render(viewTemp.fileTemplates, {
         element: HTMLDOM
     })
@@ -19,72 +19,26 @@ function conversion(data) {
     // outExportFileByStr('App.vue', vueTemp)
 }
 
+
+
+// 组件转模板
 function ComponentToTemplate(data, HTMLDOM) {
 
     data.forEach((item) => {
-        // 组件名
-        let componentName = item.componentName.split('-').reverse()[0]
 
-        // 组件数据
-        const componentData = {
-            attrs: '',
-            text: item.componentText
-        }
+        /**
+         * 此处的变量名对应组件名称
+         * 如果是van的组件会选取van-后面的组件名称
+         */
+        const componentName = item.componentName.split('-').reverse()[0]
+        const name = componentName === 'container' || componentName === 'nested-container' ? 'layout' : componentName
 
         // 格式化组件标签属性 {key:value} => key="value"
         const attrs = item.componentAttrs
+        
+        const template = NameGetTemplate[name] && NameGetTemplate[name](attrs)
 
-        // 如果是布局组件则需要特殊处理。
-        if (componentName === 'container' || componentName === LAYOUT) {
-            // col组件处理
-            const colTempArray = []
-            attrs.col.forEach((item) => {
-                const colData = {
-                    attrs: '',
-                    element: []
-                }
-                Object.keys(item).forEach(key => {
-                    if (key !== 'children') {
-                        colData.attrs += ` ${key}="${item[key]}"`
-                    }
-                })
-
-                // 递归函数
-                if (item.children.length > 0) {
-                    ComponentToTemplate(item.children, colData.element)
-                }
-
-                const colTemp = ejs.render(viewTemp['col'], colData)
-                colTempArray.push(colTemp)
-            })
-
-            // row组件处理
-            const rowData = {
-                attrs: '',
-                element: colTempArray
-            }
-            Object.keys(attrs.row).forEach(key => {
-                rowData.attrs += ` ${key}="${attrs.row[key]}"`
-            })
-
-            const elementCode = ejs.render(viewTemp['row'], rowData)
-            HTMLDOM.push(elementCode)
-        } else {
-
-            Object.keys(attrs).forEach(key => {
-                let value = attrs[key]
-                if(key === 'style' && typeof value === 'object'){
-                    let val = ''
-                    for(let k in value){
-                        val += `${k}:${value[k]}; `
-                    }
-                    value = val
-                }
-                componentData.attrs += ` ${key}="${value}"`
-            })
-            const elementCode = ejs.render(viewTemp[componentName], componentData)
-            HTMLDOM.push(elementCode)
-        }
+        HTMLDOM.push(template)
     })
 }
 
