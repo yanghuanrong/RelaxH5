@@ -1,5 +1,6 @@
 <template>
   <div class="editor-page">
+    <div class="page-topbar"></div>
     <div class="page-wrapper">
       <leftComponent />
       <phoneComponent />

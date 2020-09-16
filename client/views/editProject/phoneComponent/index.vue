@@ -1,10 +1,9 @@
 <template>
-  <div class="editor-toolbar__center">
+  <div class="editor-toolbar__phone">
     <div class="edit-main">
-      <div class="eidtor-code" @click="clickCode">
-        <!-- <a-icon type="code" /> -->
+      <!-- <div class="eidtor-code" @click="clickCode">
         <Icon type="md-add" />
-      </div>
+      </div> -->
       <!-- <div class="editor-toolbar__top">
         <div class="control-bar-wrapper">
           <div class="zoom">

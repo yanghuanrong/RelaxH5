@@ -72,29 +72,58 @@ html {
     height: inherit;
 }
 
+.page-topbar{
+    height: 60px;
+    background: #f3f6f8;
+}
+
 .page-wrapper {
-    height: 100%;
+    height: calc(100% - 60px);
     display: flex;
 
-    .editor-toolbar__left {
+    .editor-toolbar__component {
         width: 300px;
+        border-left: 1px solid #eee;
 
-        .left-layout-wrap {
+        .layout-wrap {
             padding: 20px;
+        }
+
+        .component_list{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+
+            dl{
+                width: 30%;
+                height: 50px;
+                line-height: 50px;
+                border: 1px solid #eee;
+                cursor: pointer;
+                text-align: center;
+
+                &:hover{
+                    background: #4eb7eb;
+                    color: #FFF;
+                }
+
+            }
+
         }
     }
 
-    .editor-toolbar__center {
+    .editor-toolbar__phone {
         flex: 1;
         overflow: auto;
-        background: #f3f6f8;
+        // background: #f3f6f8;
         position: relative;
     }
 
-    .editor-toolbar__right {
+    .editor-toolbar__file {
         width: 300px;
+        border-right: 1px solid #eee;
 
-        .right-layout-wrap {
+        .layout-wrap {
             padding: 20px;
         }
     }
@@ -127,23 +156,25 @@ html {
     .phone-page {
         width: 375px;
         height: 667px;
-        background: #FFF;
         position: absolute;
         // border-radius: 20px;
         top: 60px;
         left: 50%;
         margin-left: 375px * -0.5;
         overflow: auto;
-        box-shadow: 0 0 10px fade(#000, 5%);
+        border: 1px solid #eee;
+        box-shadow: 0 10px 10px fade(#000, 5%);
 
         .draggalbe-handle{
-            position: relative;
+            &>*{
+                position: relative;
+            }
 
-            &:hover::after{
+            &>*:hover::after{
                 display: block;
             }
 
-            &::after{
+            &>*::after{
                 content: "";
                 position: absolute;
                 left: 0;

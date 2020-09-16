@@ -28,6 +28,18 @@ data.forEach((item) => {
 
 const component = [
   {
+    componentName: "div",
+    draggalbe: true,
+    componentText: "编辑文本",
+    componentTitle: "文本",
+    componentAttrs: {
+      class: ['text-component'],
+      style: {
+        width: '100%'
+      },
+    }
+  },
+  {
     componentName: "van-button",
     draggalbe: true,
     componentText: "按钮",

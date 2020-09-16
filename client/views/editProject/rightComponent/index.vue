@@ -1,10 +1,8 @@
 <template>
-  <div class="editor-toolbar__right">
-    <div class="right-layout-wrap">
+  <div class="editor-toolbar__component">
+    <div class="layout-wrap">
       <!-- 布局组件的使用 -->
-      <Tabs>
-        <TabPane label="默认布局">
-          <draggable
+         <!-- <draggable
             :list="list"
             :options="{sort:false}"
             :group="{ name: 'layouts', pull: 'clone', put: false}"
@@ -16,22 +14,27 @@
               :key="'left-layout' + i"
               class="left-layout-grid"
             />
-          </draggable>
-        </TabPane>
-        <TabPane label="自定义布局"></TabPane>
-      </Tabs>
+          </draggable> -->
 
       <!-- 可用的基础组件 -->
+
+      <div style="margin-bottom: 10px">基础组件</div>
       <draggable
         :list="component"
         :options="{sort:false}"
         :group="{ name: 'layouts', pull: 'clone', put: false}"
         :clone="cloneComponent"
+         class="component_list" 
       >
         <template v-for="(item, i) in component">
-          <div :key="'component' + i">{{item.componentTitle}}</div>
+          <dl :key="'component' + i">
+            <dt></dt>
+            <dd>{{item.componentTitle}}</dd>
+          </dl>
           <!-- <component :key="'component' + i" :is="item.componentName" v-bind="item"></component> -->
         </template>
+
+
       </draggable>
     </div>
 
@@ -57,6 +60,8 @@
 import draggable from "vuedraggable";
 import components from "./vanComponent";
 import editComponent from "./component"
+
+console.log(components.component)
 
 export default {
   components: {
