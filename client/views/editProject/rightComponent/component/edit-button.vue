@@ -55,7 +55,7 @@
 
 <script>
 export default {
-  name: "editvan-button",
+  name: "editButton",
   props: {
     drawerComponent: Object,
   },

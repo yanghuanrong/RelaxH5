@@ -101,6 +101,7 @@ html {
                 border: 1px solid #eee;
                 cursor: pointer;
                 text-align: center;
+                margin-bottom: 10px;
 
                 &:hover{
                     background: #4eb7eb;
@@ -157,6 +158,8 @@ html {
         width: 375px;
         height: 667px;
         position: absolute;
+        cursor: url(../assets/cursor.png),auto;
+
         // border-radius: 20px;
         top: 60px;
         left: 50%;
@@ -172,6 +175,8 @@ html {
 
             &>*:hover::after{
                 display: block;
+                cursor: url(../assets/cursor.png),auto;
+
             }
 
             &>*::after{
@@ -191,6 +196,7 @@ html {
     .phone-wrap.eidtor {
         min-height: 100%;
         overflow: auto;
+        
 
         .edit{
             position: relative;

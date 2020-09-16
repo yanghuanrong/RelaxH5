@@ -29,6 +29,7 @@ data.forEach((item) => {
 const component = [
   {
     componentName: "div",
+    componentEdit: 'editText',
     draggalbe: true,
     componentText: "编辑文本",
     componentTitle: "文本",
@@ -41,6 +42,7 @@ const component = [
   },
   {
     componentName: "van-button",
+    componentEdit: 'editButton',
     draggalbe: true,
     componentText: "按钮",
     componentTitle: "按钮",
@@ -50,6 +52,7 @@ const component = [
   },
   {
     componentName: "van-tag",
+    componentEdit: 'editTag',
     draggalbe: true,
     componentText: "标签",
     componentTitle: "标签",
@@ -57,6 +60,7 @@ const component = [
   },
   {
     componentName: "Swiper",
+    componentEdit: 'editSwiper',
     draggalbe: true,
     componentText: "轮播",
     componentTitle: "轮播",

@@ -2,7 +2,9 @@
   <div class="editor-toolbar__component">
     <div class="layout-wrap">
       <!-- 布局组件的使用 -->
-         <!-- <draggable
+      <div style="margin-bottom: 10px">布局组件</div>
+
+         <draggable
             :list="list"
             :options="{sort:false}"
             :group="{ name: 'layouts', pull: 'clone', put: false}"
@@ -14,11 +16,11 @@
               :key="'left-layout' + i"
               class="left-layout-grid"
             />
-          </draggable> -->
+          </draggable>
 
       <!-- 可用的基础组件 -->
 
-      <div style="margin-bottom: 10px">基础组件</div>
+      <div style="margin-top: 15px; margin-bottom: 10px">基础组件</div>
       <draggable
         :list="component"
         :options="{sort:false}"
@@ -48,7 +50,7 @@
     >
       <component
         v-if="drawerComponent.componentName"
-        :is="'edit' + drawerComponent.componentName"
+        :is="drawerComponent.componentEdit"
         :drawerComponent="drawerComponent"
       ></component>
     </Drawer>
@@ -58,7 +60,7 @@
 
 <script>
 import draggable from "vuedraggable";
-import components from "./vanComponent";
+import components from "./staticComponent";
 import editComponent from "./component"
 
 console.log(components.component)

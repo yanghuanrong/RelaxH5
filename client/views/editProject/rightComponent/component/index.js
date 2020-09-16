@@ -1,11 +1,11 @@
-import editvanButton from './edit-button'
-import editvanTag from './edit-tag'
+import editButton from './edit-button'
+import editTag from './edit-tag'
 import editSwiper from './edit-swiper'
 import editText from './edit-text'
 
 export default {
-  editvanButton,
-  editvanTag,
+  editButton,
+  editTag,
   editSwiper,
   editText,
 }

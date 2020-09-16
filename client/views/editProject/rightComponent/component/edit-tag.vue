@@ -8,7 +8,7 @@
 
 <script>
 export default {
-  name: "editvan-tag",
+  name: "editTag",
   props: {
     drawerComponent: Object
   },
