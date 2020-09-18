@@ -43,14 +43,14 @@ export default {
     return {
       fontSizeList: [12, 13, 14, 16, 18, 20, 24, 32, 48, 64, 96],
       fontSizeDrap: false,
-      fontSizeValue: 15,
+      fontSizeValue: 14,
       component: {},
       componentStyle: {}
     };
   },
   created() {
     this.component = this.drawerComponent;
-    
+    this.fontSizeValue = this.component.componentAttrs.style.fontSize && parseInt(this.component.componentAttrs.style.fontSize )
   },
   watch: {
     fontSizeValue(val){
