@@ -50,7 +50,7 @@ export default {
   },
   created() {
     this.component = this.drawerComponent;
-    this.fontSizeValue = this.component.componentAttrs.style.fontSize && parseInt(this.component.componentAttrs.style.fontSize )
+    this.fontSizeValue = this.component.componentAttrs.style.fontSize ? (parseInt(this.component.componentAttrs.style.fontSize )) : 14
   },
   watch: {
     fontSizeValue(val){
