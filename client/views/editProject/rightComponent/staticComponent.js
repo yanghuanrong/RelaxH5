@@ -36,7 +36,7 @@ const component = [
     componentAttrs: {
       class: ['text-component'],
       style: {
-        width: '100%'
+        width: '100%',
       },
     }
   },

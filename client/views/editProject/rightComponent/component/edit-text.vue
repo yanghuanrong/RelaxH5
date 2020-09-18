@@ -23,10 +23,9 @@
             </Dropdown>
 
             <ButtonGroup style="margin-left: 20px">
-              <Button>A+</Button>
-              <Button>A-</Button>
+              <Button @click="fontSizeIncrease">A+</Button>
+              <Button @click="fontSizeReduce">A-</Button>
             </ButtonGroup>
-
           </FormItem>
         </Form>
       </TabPane>
@@ -46,18 +45,36 @@ export default {
       fontSizeDrap: false,
       fontSizeValue: 15,
       component: {},
+      componentStyle: {}
     };
   },
   created() {
     this.component = this.drawerComponent;
+    
+  },
+  watch: {
+    fontSizeValue(val){
+      this.$set(this.component.componentAttrs.style, 'fontSize',  val + 'px')
+      this.saveComponent()
+    }
   },
   methods: {
     saveComponent() {
       this.$store.commit("saveComponent", this.component);
     },
+    // 切换文字大小
     selectFontSize(val) {
       this.fontSizeValue = val;
-      console.log(val);
+    },
+    // 文字大小
+    fontSizeIncrease() {
+      this.fontSizeValue += 2;
+    },
+    fontSizeReduce() {
+      this.fontSizeValue -= 2;
+      if (this.fontSizeValue <= 12) {
+        this.fontSizeValue = 12;
+      }
     },
   },
 };
