@@ -35,9 +35,7 @@ const component = [
     componentTitle: "文本",
     componentAttrs: {
       class: ['text-component'],
-      style: {
-        width: '100%',
-      },
+      style: {},
     }
   },
   {

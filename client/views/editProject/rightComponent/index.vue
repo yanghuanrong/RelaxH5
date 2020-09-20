@@ -41,7 +41,7 @@
     </div>
 
     <Drawer
-      width="400"
+      width="350"
       :maskStyle="{
         background: 'rgba(0,0,0, 0.2)'
       }"
