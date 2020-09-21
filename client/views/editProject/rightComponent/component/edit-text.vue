@@ -83,13 +83,13 @@
           </Tooltip>
           <i></i>
           <Tooltip content="加粗" placement="top">
-            <span class="x-icon x-icon-bold" :class="{active: componentStyle.fontWeight === 'bold'}" @click="setFontWeighh"></span>
+            <span class="x-icon x-icon-bold" :class="{active: componentStyle.fontWeight === 'bold'}" @click="setFontWeigh"></span>
           </Tooltip>
           <Tooltip content="倾斜" placement="top">
-            <span class="x-icon x-icon-italic"></span>
+            <span class="x-icon x-icon-italic" :class="{active: componentStyle.fontStyle === 'italic'}" @click="setFontStyle"></span>
           </Tooltip>
           <Tooltip content="下划线" placement="top">
-            <span class="x-icon x-icon-underline"></span>
+            <span class="x-icon x-icon-underline" :class="{active: componentStyle.textDecoration === 'underline'}" @click="setTextDecoration"></span>
           </Tooltip>
           <Tooltip content="清除" placement="top">
             <span class="x-icon x-icon-trash"></span>
@@ -119,6 +119,8 @@ export default {
         background: "",
         textAlign: "left",
         fontWeight: "normal",
+        fontStyle: "normal",
+        textDecoration: "none"
       },
     };
   },
@@ -136,6 +138,10 @@ export default {
     this.componentStyle.background = style.background || "";
     this.componentStyle.textAlign = style.textAlign || 'left'
     this.componentStyle.fontWeight = style.fontWeight || 'normal'
+    this.componentStyle.fontStyle = style.fontStyle || 'normal'
+    this.componentStyle.textDecoration = style.textDecoration || 'none'
+    
+
   },
   watch: {
     // 字体大小
@@ -183,9 +189,17 @@ export default {
       this.setStyle("textAlign", val);
     },
     // 文字加粗
-    setFontWeighh(){
+    setFontWeigh(){
       this.componentStyle.fontWeight = this.componentStyle.fontWeight === "bold" ? "normal" : "bold"
       this.setStyle("fontWeight", this.componentStyle.fontWeight);
+    },
+    setFontStyle(){
+      this.componentStyle.fontStyle = this.componentStyle.fontStyle === "italic" ? "normal" : "italic"
+      this.setStyle("fontStyle", this.componentStyle.fontStyle);
+    },
+    setTextDecoration(){
+      this.componentStyle.textDecoration = this.componentStyle.textDecoration === "underline" ? "none" : "underline"
+      this.setStyle("textDecoration", this.componentStyle.textDecoration);
     },
     setStyle(key, val) {
       this.$set(this.component.componentAttrs.style, key, val);
