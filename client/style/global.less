@@ -291,3 +291,47 @@ html {
         display: block;
     }
 }
+
+
+.project-tree{
+    padding-left: 10px;
+
+    .ivu-tree-title{
+        width: calc(100% - 26px);
+    }
+    .file-row{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .file-name{
+            display: flex;
+            align-items: center;
+
+            span{
+                margin-right: 2px;
+            }
+        }
+        .file-button{
+            span{
+                margin-left: 5px;
+            }
+        }
+    }
+    .x-icon-vue{
+        background: url(../assets/vue.svg) no-repeat center;
+        background-size: 14px;
+        display: inline-block;
+        width: 14px;
+        height: 14px;
+    }
+    [class$="html5"]{
+        color:#e54c24
+    }
+    [class$="javascript"]{
+        color:#fbd601
+    }
+    [class$="css3"]{
+        color:#3b97da
+    }
+}
