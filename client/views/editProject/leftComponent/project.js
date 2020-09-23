@@ -96,6 +96,23 @@ export default [{
       expand: true
     },
   ]
-}, 
-
+},
+{
+    title: 'babel.config.js',
+    icon: 'ivu-icon ivu-icon-logo-javascript',
+    type: 'file',
+    expand: true
+},
+{
+  title: 'package.json',
+  icon: 'x-icon-json',
+  type: 'file',
+  expand: true
+},
+{
+  title: 'README.md',
+  icon: 'ivu-icon ivu-icon-ios-information-circle',
+  type: 'file',
+  expand: true
+}
 ]
