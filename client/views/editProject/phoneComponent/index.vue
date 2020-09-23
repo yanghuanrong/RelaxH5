@@ -35,6 +35,18 @@
       </div>-->
 
       <div class="phone-page">
+        <div class="phone-head">
+          <div>
+            <span class="x-icon x-icon-more-horizontal"></span> 5G
+            <span class="x-icon x-icon-wifi"></span> 
+          </div>
+          <span class="time">09:51</span>
+          <div>
+            <span class="x-icon x-icon-battery-charging"></span>
+          </div>
+          
+        </div>
+        <div class="phone-body">
         <draggable-view
           handle=".draggalbe-handle"
           class="phone-wrap eidtor"
@@ -44,6 +56,7 @@
           }"
           :list="page"
         />
+        </div>
       </div>
     </div>
   </div>

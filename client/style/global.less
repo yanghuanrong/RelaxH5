@@ -158,9 +158,35 @@ html {
 
     .phone-page {
         width: 375px;
-        height: 667px;
         position: absolute;
-        cursor: url(../assets/cursor.png),auto;
+
+
+        .phone-head{
+            height: 20px;
+            background-color: #000;
+            display: flex;
+            justify-content: space-between;
+            color: #FFF;
+            padding: 0 10px;
+            position: relative;
+            font-size: 12px;
+            line-height: 20px;
+
+            .x-icon{
+                font-size: 14px;
+            }
+
+            .time{
+                position: absolute;
+                left: 50%;
+                top: 0;
+                transform: translateX(-50%);
+            }
+        }
+        .phone-body{
+            cursor: url(../assets/cursor.png),auto;
+            height: 667px;
+        }
 
         // border-radius: 20px;
         top: 60px;
