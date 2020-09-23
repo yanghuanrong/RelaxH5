@@ -79,6 +79,7 @@ export default [{
           title: 'index.vue',
           icon: 'x-icon-vue',
           type: 'vue',
+          selected: true,
           expand: true
         },
       ],

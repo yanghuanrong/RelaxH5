@@ -40,7 +40,7 @@
             <span class="x-icon x-icon-more-horizontal"></span> 5G
             <span class="x-icon x-icon-wifi"></span> 
           </div>
-          <span class="time">09:51</span>
+          <span class="time">{{time.text}}</span>
           <div>
             <span class="x-icon x-icon-battery-charging"></span>
           </div>
@@ -72,7 +72,10 @@ export default {
   },
   data() {
     return {
-      // list: []
+      time: {
+        text: '00:00',
+        timer: null
+      }
     };
   },
   computed: {
@@ -84,6 +87,17 @@ export default {
         this.$store.commit("updatePage", value);
       }
     }
+  },
+  created(){
+    this.time.timer = setInterval(() => {
+      const date = new Date()
+      let M = date.getHours()
+      M = M < 10 ? `0${M}` : M
+      let S = date.getMinutes()
+      S = S < 10 ? `0${S}` : S
+
+      this.time.text = M+':'+S
+    }, 1000)
   },
   methods: {
     clickCode() {

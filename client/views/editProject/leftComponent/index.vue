@@ -52,7 +52,7 @@ console.log(project)
                     : 
                     null
                     }
-                    <span class="x-icon x-icon-download"></span>
+                    <span class="x-icon x-icon-download" title={`下载 ${data.title}`}></span>
                     <span class="x-icon x-icon-trash-2" onClick={(e) => {e.stopPropagation(); this.remove(root, node, data) }}></span>
                   </div>
                 </div>
@@ -71,8 +71,6 @@ console.log(project)
                 this.$set(data, 'children', children);
             },
             remove (root, node, data) {
-                console.log(data)
-
                 this.$Modal.confirm({
                     title: `你确定删除 <span style="color:#F00">${data.title}</span> 吗?`,
                     content: `<p>删除${data.title}后不可恢复，请谨慎处理。</p>`,

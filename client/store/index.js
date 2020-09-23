@@ -36,7 +36,6 @@ export default new Vuex.Store({
     },
     saveComponent({pageComponent}, component){
       getDeepComponent(pageComponent, component.componentID, (oldComponent) => {
-        // oldComponent = Object.assign(oldComponent, component)
         oldComponent = Object.assign(oldComponent, component)
         Vue.set(oldComponent, 'componentAttrs', component.componentAttrs)
       })
@@ -48,8 +47,6 @@ export default new Vuex.Store({
       }
       state.eidtComponent = component
     },
-
-
   },
   actions: {
   },
