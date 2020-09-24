@@ -3,117 +3,127 @@ export default [{
   icon: 'x-icon x-icon-folder',
   type: 'folder',
   expand: true,
-  children: [
-    {
+  content: null,
+  children: [{
       title: 'favicon.ico',
       icon: 'x-icon-vue',
       type: 'ico',
-      expand: true
+      expand: true,
+      content: null,
     },
     {
       title: 'index.html',
       icon: 'ivu-icon ivu-icon-logo-html5',
       type: 'file',
-      expand: true
+      expand: true,
+      content: null,
     },
   ]
-}, 
+},
 {
   title: 'src',
   icon: 'x-icon x-icon-folder',
   type: 'folder',
   expand: true,
-  children: [
-    {
+  content: null,
+  children: [{
       title: 'assets',
       icon: 'x-icon x-icon-folder',
       type: 'folder',
-      expand: true
+      expand: true,
+      content: null,
     },
     {
       title: 'router',
       icon: 'x-icon x-icon-folder',
       type: 'folder',
-      children: [
-        {
-          title: 'index.js',
-          icon: 'ivu-icon ivu-icon-logo-javascript',
-          type: 'file',
-          expand: true
-        },
-      ],
+      content: null,
+      children: [{
+        title: 'index.js',
+        icon: 'ivu-icon ivu-icon-logo-javascript',
+        type: 'file',
+        expand: true,
+        content: null,
+      }, ],
     },
     {
       title: 'store',
       icon: 'x-icon x-icon-folder',
       type: 'folder',
-      children: [
-        {
-          title: 'index.js',
-          icon: 'ivu-icon ivu-icon-logo-javascript',
-          type: 'file',
-          expand: true
-        },
-      ],
+      content: null,
+      children: [{
+        title: 'index.js',
+        icon: 'ivu-icon ivu-icon-logo-javascript',
+        type: 'file',
+        expand: true,
+        content: null,
+      }, ],
     },
     {
       title: 'style',
       icon: 'x-icon x-icon-folder',
       type: 'folder',
-      children: [
-        {
-          title: 'global.less',
-          icon: 'ivu-icon ivu-icon-logo-css3',
-          type: 'file',
-          expand: true
-        },
-      ],
+      content: null,
+      children: [{
+        title: 'global.less',
+        icon: 'ivu-icon ivu-icon-logo-css3',
+        type: 'file',
+        expand: true,
+        content: null,
+      }, ],
     },
     {
       title: 'view',
       icon: 'x-icon x-icon-folder',
       type: 'folder',
       expand: true,
-      children: [
-        {
-          title: 'index.vue',
-          icon: 'x-icon-vue',
-          type: 'vue',
-          selected: true,
-          expand: true
-        },
-      ],
+      content: null,
+      children: [{
+        title: 'index.vue',
+        icon: 'x-icon-vue',
+        type: 'vue',
+        selected: true,
+        expand: true,
+        content: [],
+      }, ],
     },
     {
       title: 'App.vue',
       icon: 'x-icon-vue',
       type: 'vue',
-      expand: true
+      expand: true,
+      content: null,
+
     },
     {
       title: 'main.js',
       icon: 'ivu-icon ivu-icon-logo-javascript',
       type: 'file',
-      expand: true
+      expand: true,
+      content: null,
+
     },
   ]
 },
 {
-    title: 'babel.config.js',
-    icon: 'ivu-icon ivu-icon-logo-javascript',
-    type: 'file',
-    expand: true
+  title: 'babel.config.js',
+  icon: 'ivu-icon ivu-icon-logo-javascript',
+  type: 'file',
+  expand: true,
+  content: null,
 },
 {
   title: 'package.json',
   icon: 'x-icon-json',
   type: 'file',
-  expand: true
+  expand: true,
+  content: null,
 },
 {
   title: 'README.md',
   icon: 'ivu-icon ivu-icon-ios-information-circle',
   type: 'file',
-  expand: true
+  expand: true,
+  content: null,
 }
 ]

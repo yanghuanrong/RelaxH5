@@ -32,7 +32,6 @@ export default new Vuex.Store({
       getDeepComponent(pageComponent, id, (component) => {
         this.commit('updateComponent', component)
       })
-
     },
     saveComponent({pageComponent}, component){
       getDeepComponent(pageComponent, component.componentID, (oldComponent) => {
@@ -47,6 +46,12 @@ export default new Vuex.Store({
       }
       state.eidtComponent = component
     },
+    checkedFile(state, file){
+      console.log(file.length)
+      if(!file.length) return
+      state.pageComponent = file[0].content
+      console.log(state.pageComponent)
+    }
   },
   actions: {
   },

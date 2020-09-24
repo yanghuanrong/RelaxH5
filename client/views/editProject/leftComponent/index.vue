@@ -1,18 +1,18 @@
 <template>
   <div class="editor-toolbar__file">
     <div class="left-layout-wrap">
-       <Tree :data="data5" :render="renderContent" class="project-tree" @on-select-change="test"></Tree>
+       <Tree :data="data" :render="renderContent" class="project-tree" @on-select-change="select"></Tree>
     </div>
   </div>
 </template>
 
 <script>
 import project from './project'
-console.log(project)
+
  export default {
         data () {
             return {
-                data5: [
+                data: [
                     {
                         title: 'RelaxH5',
                         icon: 'x-icon x-icon-folder',
@@ -57,8 +57,8 @@ console.log(project)
                   </div>
                 </div>
             },
-            test(data){
-              console.log(data)
+            select(data){
+              this.$store.commit('checkedFile', data)
             },
             append (data) {
                 const children = data.children || [];
@@ -66,7 +66,8 @@ console.log(project)
                               title: 'About.vue',
                               icon: 'x-icon-vue',
                               type: 'file',
-                              expand: true
+                              expand: true,
+                              content: [],
                           },);
                 this.$set(data, 'children', children);
             },
