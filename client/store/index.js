@@ -47,7 +47,6 @@ export default new Vuex.Store({
       state.eidtComponent = component
     },
     checkedFile(state, file){
-      console.log(file.length)
       if(!file.length) return
       state.pageComponent = file[0].content
       console.log(state.pageComponent)

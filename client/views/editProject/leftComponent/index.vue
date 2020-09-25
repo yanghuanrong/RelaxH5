@@ -1,7 +1,7 @@
 <template>
   <div class="editor-toolbar__file">
     <div class="left-layout-wrap">
-       <Tree :data="data" :render="renderContent" class="project-tree" @on-select-change="select"></Tree>
+       <Tree :data="data" :render="renderContent" class="project-tree" ref="tree" @on-select-change="select"></Tree>
     </div>
   </div>
 </template>
@@ -38,6 +38,11 @@ import project from './project'
                     }
                 ],
             }
+        },
+        mounted(){
+          /* 让选中的页面成为可编辑 */
+          const node = this.$refs.tree.getSelectedNodes()
+          this.select(node)
         },
         methods: {
             renderContent (h, { root, node, data }) {
