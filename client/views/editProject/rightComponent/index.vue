@@ -63,8 +63,6 @@ import draggable from "vuedraggable";
 import components from "./staticComponent";
 import editComponent from "./component"
 
-console.log(components.component)
-
 export default {
   components: {
     draggable,

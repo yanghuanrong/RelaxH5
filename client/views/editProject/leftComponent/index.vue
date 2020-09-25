@@ -64,7 +64,36 @@ import project from './project'
             },
             select(data){
               this.$store.commit('checkedFile', data)
+              const path = this.getFilePath()
+              path && this.$store.commit('checkedFilePath', path)
             },
+            getFilePath(){
+              let path = ''
+              let parent = null
+              let selectedNode = this.$refs.tree.flatState.filter(obj => obj.node.selected)
+              if(selectedNode.length) {
+                selectedNode = selectedNode[0]
+                if(selectedNode.node.type === 'folder'){
+                  return
+                }
+              } else {
+                return
+              }
+              const flatState = this.$refs.tree.flatState
+              path = selectedNode.node.title
+              parent = selectedNode.parent
+
+              deepPath(parent)
+              function deepPath(k){
+                flatState.filter(obj => {
+                  if(obj.nodeKey === k){
+                      path = obj.node.title + '/' + path
+                      deepPath(obj.parent)
+                  }
+                })
+              }
+              return path
+          },
             append (data) {
                 const children = data.children || [];
                 children.push({

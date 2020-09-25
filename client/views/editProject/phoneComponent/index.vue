@@ -1,9 +1,10 @@
 <template>
   <div class="editor-toolbar__phone">
     <div class="edit-main">
+      <div>页面路径：{{filePath}}</div>
       <!-- <div class="eidtor-code" @click="clickCode">
         <Icon type="md-add" />
-      </div> -->
+      </div>-->
       <!-- <div class="editor-toolbar__top">
         <div class="control-bar-wrapper">
           <div class="zoom">
@@ -38,24 +39,23 @@
         <div class="phone-head">
           <div>
             <span class="x-icon x-icon-more-horizontal"></span> 5G
-            <span class="x-icon x-icon-wifi"></span> 
+            <span class="x-icon x-icon-wifi"></span>
           </div>
           <span class="time">{{time.text}}</span>
           <div>
             <span class="x-icon x-icon-battery-charging"></span>
           </div>
-          
         </div>
         <div class="phone-body">
-        <draggable-view
-          handle=".draggalbe-handle"
-          class="phone-wrap eidtor"
-          :options="{
+          <draggable-view
+            handle=".draggalbe-handle"
+            class="phone-wrap eidtor"
+            :options="{
             animation: 150,
             fallbackOnBody: true
           }"
-          :list="page"
-        />
+            :list="page"
+          />
         </div>
       </div>
     </div>
@@ -65,45 +65,46 @@
 <script>
 import draggable from "vuedraggable";
 import { conversion } from "@templates/utils";
+import { mapState } from "vuex";
 
 export default {
   components: {
-    draggable
+    draggable,
   },
   data() {
     return {
       time: {
-        text: '00:00',
-        timer: null
-      }
+        text: "00:00",
+        timer: null,
+      },
     };
   },
-  computed: {
+  computed: mapState({
+    filePath: "filePath",
     page: {
       get() {
         return this.$store.state.pageComponent;
       },
       set(value) {
         this.$store.commit("updatePage", value);
-      }
-    }
-  },
-  created(){
+      },
+    },
+  }),
+  created() {
     this.time.timer = setInterval(() => {
-      const date = new Date()
-      let M = date.getHours()
-      M = M < 10 ? `0${M}` : M
-      let S = date.getMinutes()
-      S = S < 10 ? `0${S}` : S
+      const date = new Date();
+      let M = date.getHours();
+      M = M < 10 ? `0${M}` : M;
+      let S = date.getMinutes();
+      S = S < 10 ? `0${S}` : S;
 
-      this.time.text = M+':'+S
-    }, 1000)
+      this.time.text = M + ":" + S;
+    }, 1000);
   },
   methods: {
     clickCode() {
       conversion(this.page);
     },
-    
-  }
+  },
 };
 </script>
