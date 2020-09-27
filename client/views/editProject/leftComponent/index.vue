@@ -63,9 +63,11 @@ import project from './project'
                 </div>
             },
             select(data){
-              this.$store.commit('checkedFile', data)
               const path = this.getFilePath()
-              path && this.$store.commit('checkedFilePath', path)
+              if(path){
+                this.$store.commit('checkedFilePath', path)
+                this.$store.commit('checkedFile', data)
+              }
             },
             getFilePath(){
               let path = ''
