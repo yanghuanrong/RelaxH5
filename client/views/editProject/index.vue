@@ -1,6 +1,9 @@
 <template>
   <div class="editor-page">
-    <div class="page-topbar"></div>
+    <div class="page-topbar">
+      <div class="logo-img"><span><i></i><i></i><i></i><i></i></span></div>
+      <div></div>
+    </div>
     <div class="page-wrapper">
       <leftComponent />
       <phoneComponent />

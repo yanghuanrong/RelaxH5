@@ -80,7 +80,11 @@ html {
 
 .page-topbar{
     height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     background: #f3f6f8;
+    padding: 0 20px;
 }
 
 .page-wrapper {
@@ -364,6 +368,79 @@ html {
         color:#90a4ae
     }
 }
+
+
+
+.logo-img {
+  position: relative;
+  width: 200px;
+
+  &::after {
+    content: "Relax | H5";
+    position: absolute;
+    left: 45px;
+    top: 0;
+    line-height: 1.2;
+    font-size: 28px;
+    color: #333;
+  }
+
+  span {
+    width: 36px;
+    height: 36px;
+    display: block;
+    position: relative;
+  }
+
+  i:nth-of-type(1) {
+    position: absolute;
+    display: block;
+    width: 13px;
+    height: 18px;
+    left: 18px;
+    top: 0;
+    background: url('../assets/01.png');
+    background-size: 100% 100%;
+  }
+
+  i:nth-of-type(2) {
+    position: absolute;
+    display: block;
+    width: 18px;
+    height: 13px;
+    right: 0;
+    top: 18px;
+    background: url('../assets/02.png');
+    background-size: 100% 100%;
+
+  }
+
+  i:nth-of-type(3) {
+    position: absolute;
+    display: block;
+    width: 13px;
+    height: 18px;
+    left: 6px;
+    bottom: 0px;
+    background: url('../assets/03.png');
+    background-size: 100% 100%;
+
+  }
+
+  i:nth-of-type(4) {
+    position: absolute;
+    display: block;
+    width: 18px;
+    height: 13px;
+    left: 0;
+    top: 6px;
+    background: url('../assets/04.png');
+    background-size: 100% 100%;
+
+  }
+
+}
+
 
 .pageCode{
     position: absolute;
