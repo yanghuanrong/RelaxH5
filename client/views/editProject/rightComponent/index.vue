@@ -42,6 +42,7 @@
 
     <Drawer
       width="350"
+      class="drawer"
       :maskStyle="{
         background: 'rgba(0,0,0, 0.2)'
       }"

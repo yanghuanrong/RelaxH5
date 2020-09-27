@@ -95,9 +95,3 @@ export default {
   },
 };
 </script>
-
-<style lang="less" scope="this api replaced by slot-scope in 2.5.0+">
-.ivu-form-item {
-  margin-bottom: 10px !important;
-}
-</style>
