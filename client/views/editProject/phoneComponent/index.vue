@@ -1,7 +1,7 @@
 <template>
   <div class="editor-toolbar__phone">
     <div class="edit-main">
-      <div>页面路径：{{filePath}}</div>
+      <div class="page-path">页面路径：{{filePath}}</div>
       <!-- <div class="eidtor-code" @click="clickCode">
         <Icon type="md-add" />
       </div>-->
@@ -65,7 +65,6 @@
 <script>
 import draggable from "vuedraggable";
 import { conversion } from "@templates/utils";
-import { mapState } from "vuex";
 
 export default {
   components: {
@@ -79,8 +78,10 @@ export default {
       },
     };
   },
-  computed: mapState({
-    filePath: "filePath",
+  computed: {
+    filePath() {
+      return this.$store.state.filePath
+    },
     page: {
       get() {
         return this.$store.state.pageComponent;
@@ -89,7 +90,7 @@ export default {
         this.$store.commit("updatePage", value);
       },
     },
-  }),
+  },
   created() {
     this.time.timer = setInterval(() => {
       const date = new Date();
