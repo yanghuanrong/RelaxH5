@@ -11,6 +11,7 @@
 
       <Modal
         v-model="fileModal.isShow"
+        @on-visible-change="initFileModal"
         title="新增文件"
         width="400"
       >
@@ -110,9 +111,48 @@ export default {
           return callback('请填写文件名称');
         } else if(!reg.test(value)){
           return callback('文件名称不合法')
-        } else {
-          callback()
         }
+
+        const children = this.fileData.children || [];
+        let isSome = false
+        if(children.length){
+          const vueFile = children.filter(item => {
+            if(item.type === 'vue'){
+              return item
+            }
+          })
+          const folderFile = children.filter(item => {
+            if(item.type === 'folder'){
+              return item
+            }
+          })
+
+          if(this.fileModal.type === 'vue'){
+            isSome = vueFile.some((item) => {
+              return item.title === value + '.vue'
+            })
+          }
+          
+          if(this.fileModal.type === 'folder'){
+            isSome = folderFile.some((item) => {
+              return item.title === value
+            })
+          }
+          
+          if(isSome){
+            return callback('文件名称已存在')
+          } else {
+            return callback()
+          }
+        }
+        
+        callback()
+    },
+    initFileModal(status){
+      if(!status){
+        this.$refs.fileForm.resetFields()
+        this.fileModal.name = ''
+      }
     },
     fileModalOK(){
       this.$refs.fileForm.validate((valid) => {
