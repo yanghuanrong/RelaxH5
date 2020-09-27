@@ -1,3 +1,5 @@
+import fileCode from './fileCode'
+
 export default [{
   title: 'public',
   icon: 'x-icon x-icon-folder',
@@ -14,7 +16,7 @@ export default [{
     {
       title: 'index.html',
       icon: 'ivu-icon ivu-icon-logo-html5',
-      type: 'file',
+      type: 'html',
       expand: true,
       content: null,
     },
@@ -41,9 +43,9 @@ export default [{
       children: [{
         title: 'index.js',
         icon: 'ivu-icon ivu-icon-logo-javascript',
-        type: 'file',
+        type: 'js',
         expand: true,
-        content: null,
+        content: fileCode.routeJs,
       }, ],
     },
     {
@@ -54,9 +56,9 @@ export default [{
       children: [{
         title: 'index.js',
         icon: 'ivu-icon ivu-icon-logo-javascript',
-        type: 'file',
+        type: 'js',
         expand: true,
-        content: null,
+        content: fileCode.storeJs,
       }, ],
     },
     {
@@ -67,7 +69,7 @@ export default [{
       children: [{
         title: 'global.less',
         icon: 'ivu-icon ivu-icon-logo-css3',
-        type: 'file',
+        type: 'css',
         expand: true,
         content: null,
       }, ],
@@ -90,17 +92,17 @@ export default [{
     {
       title: 'App.vue',
       icon: 'x-icon-vue',
-      type: 'vue',
+      type: 'html',
       expand: true,
-      content: null,
+      content: fileCode.appVue,
 
     },
     {
       title: 'main.js',
       icon: 'ivu-icon ivu-icon-logo-javascript',
-      type: 'file',
+      type: 'js',
       expand: true,
-      content: null,
+      content: fileCode.mainJs,
 
     },
   ]
@@ -108,21 +110,21 @@ export default [{
 {
   title: 'babel.config.js',
   icon: 'ivu-icon ivu-icon-logo-javascript',
-  type: 'file',
+  type: 'js',
   expand: true,
   content: null,
 },
 {
   title: 'package.json',
   icon: 'x-icon-json',
-  type: 'file',
+  type: 'json',
   expand: true,
   content: null,
 },
 {
   title: 'README.md',
   icon: 'ivu-icon ivu-icon-ios-information-circle',
-  type: 'file',
+  type: 'md',
   expand: true,
   content: null,
 }

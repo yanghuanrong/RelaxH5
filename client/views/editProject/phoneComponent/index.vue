@@ -1,19 +1,19 @@
 <template>
   <div class="editor-toolbar__phone">
     <div class="edit-main">
-      <div class="page-path">页面路径：{{filePath}}</div>
+      <div class="page-path">文件路径：{{filePath}}</div>
 
       <div class="editor-toolbar__top">
         <div class="control-bar-wrapper">
          
-          <div v-show="codeView">
+          <div v-if="codeView">
           <Tooltip content="关闭源码" placement="left">
             <div class="button-item" @click="codeView = false">
                 <span class="x-icon x-icon-x"></span>
             </div>
             </Tooltip>
           </div>
-          <div v-show="!codeView">
+          <div v-if="!codeView">
           <Tooltip content="查看源码" placement="left">
           <div class="button-item" @click="clickCode">
               <span class="x-icon x-icon-codepen"></span>
@@ -40,9 +40,11 @@
         </div>
       </div>
 
-      <div class="pageCode" v-show="codeView">
-        <highlight-code lang="html">
-                {{pageCode}}
+      <div class="pageCode" v-show="codeView" :style="{
+        right: $store.state.fileType.type === 'vue' ? '44px' : '0'
+      }">
+        <highlight-code :lang="fileType">
+            {{pageCode}}
         </highlight-code>
       </div>
 
@@ -93,7 +95,10 @@ export default {
   },
   computed: {
     filePath() {
-      return this.$store.state.filePath
+      return this.$store.state.fileType.path
+    },
+    fileType(){
+      return this.$store.state.fileType.type
     },
     page: {
       get() {
@@ -103,6 +108,17 @@ export default {
         this.$store.commit("updatePage", value);
       },
     },
+  },
+  watch: {
+    '$store.state.fileType.path': function(){
+      const fileType = this.$store.state.fileType
+      if(fileType.type !== 'vue'){
+        this.codeView = true
+        this.pageCode = fileType.content
+      } else {
+        this.codeView = false
+      }
+    }
   },
   created() {
     this.time.timer = setInterval(() => {

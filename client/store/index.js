@@ -22,7 +22,7 @@ const getDeepComponent = (pageComponent, id, callback) => {
 export default new Vuex.Store({
   state: {
     pageComponent: [],
-    filePath: '',
+    fileType: {},
     eidtComponent: null,
   },
   mutations: {
@@ -49,10 +49,11 @@ export default new Vuex.Store({
     },
     checkedFile(state, file){
       if(!file.length) return
+      if(file[0].type !== 'vue') return
       state.pageComponent = file[0].content
     },
-    checkedFilePath(state, path){
-      state.filePath = path
+    checkedFileType(state, params){
+      state.fileType = params
     }
   },
   actions: {
