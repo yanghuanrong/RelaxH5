@@ -20,6 +20,11 @@ Vue.use(Vant);
 import Component from '@components/index'
 Vue.use(Component)
 
+/** VueHighlightJS */
+import VueHighlightJS from 'vue-highlight.js'
+import 'vue-highlight.js/lib/allLanguages'
+Vue.use(VueHighlightJS)
+
 Vue.config.productionTip = false
 
 new Vue({

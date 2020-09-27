@@ -1,6 +1,7 @@
 @import "rest.less";
 @import "m_style.less";
 @import "icon.less";
+@import "highlight";
 
 #app,
 body,
@@ -12,50 +13,53 @@ html {
 
 .editor-toolbar__top {
     position: absolute;
-    top: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: #FFF;
-    height: 50px;
-    display: flex;
-    border-bottom: 1px solid #f3f6f8;
-    justify-content: space-between;
-    padding: 0 20px;
-    border-radius: 50px;
-
-    .logo {
-        width: 35px;
-    }
+    top: 0;
+    right: 0;
+    bottom: 0;
+    border-left: 1px solid #eee;
 
     .control-bar-wrapper {
-        display: flex;
-        justify-content: center;
 
-        i {
-            font-size: 16px;
+        .ivu-tooltip{
+            display: block;
         }
 
         .zoom {
-            line-height: 50px;
-
-            span {
-                margin: 0 5px;
-            }
-
-            i {
-                font-size: 16px;
-                cursor: pointer;
-            }
-
-            margin-right: 10px;
-        }
-
-        .button-item {
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding: 0 10px;
+            align-items: center;
+            font-size: 16px;
+            padding: 10px 0;
+
+            div{
+                cursor: pointer;
+                width: 100%;
+                text-align: center;
+
+                &:hover{
+                    color: #4eb7eb;
+                }
+            }
+            span {
+                padding: 5px 0;
+               display: block;
+               font-size: 12px;
+            }
+        }
+
+        .button-item {
+            text-align: center;
+            font-size: 20px;
+            height: 44px;
+            line-height: 44px;
             cursor: pointer;
+            width: 44px;
+
+            &:hover{
+                color: #FFF;
+                background-color: #4eb7eb;
+            }
         }
     }
 
@@ -143,6 +147,10 @@ html {
         font-size: 12px;
         background: #eee;
         padding: 0 10px;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
     }
 
     .eidtor-code{
@@ -356,6 +364,23 @@ html {
         color:#90a4ae
     }
 }
+
+.pageCode{
+    position: absolute;
+    top:0;
+    left: 0;
+    right: 44px;
+    bottom: 25px;
+    background: #282c34;
+    z-index: 10;
+    padding: 10px;
+
+    pre{
+        white-space: pre-wrap;
+word-wrap: break-word;
+    }
+}
+
 
 *{
     moz-user-select: -moz-none;

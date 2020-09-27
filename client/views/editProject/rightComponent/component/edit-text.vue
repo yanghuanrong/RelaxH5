@@ -2,8 +2,8 @@
   <div>
     <Tabs>
       <TabPane label="样式">
-        <Collapse simple accordion>
-          <Panel name="1">
+        <Collapse simple accordion v-model="unfold">
+          <Panel name="1" >
             基础样式
             <div slot="content">
               <Form :label-width="80">
@@ -185,6 +185,7 @@ export default {
   },
   data() {
     return {
+      unfold: '1',
       fontSizeList: [12, 13, 14, 16, 18, 20, 24, 32, 48, 64, 96],
       fontSizeDrap: false,
       component: {},

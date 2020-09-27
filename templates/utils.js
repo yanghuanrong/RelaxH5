@@ -15,6 +15,7 @@ function conversion(data) {
         element: HTMLDOM
     })
 
+    return vueTemp
     console.log(vueTemp)
     // outExportFileByStr('App.vue', vueTemp)
 }

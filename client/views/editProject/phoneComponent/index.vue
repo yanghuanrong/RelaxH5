@@ -2,38 +2,49 @@
   <div class="editor-toolbar__phone">
     <div class="edit-main">
       <div class="page-path">页面路径：{{filePath}}</div>
-      <!-- <div class="eidtor-code" @click="clickCode">
-        <Icon type="md-add" />
-      </div>-->
-      <!-- <div class="editor-toolbar__top">
+
+      <div class="editor-toolbar__top">
         <div class="control-bar-wrapper">
+         
+          <div v-show="codeView">
+          <Tooltip content="关闭源码" placement="left">
+            <div class="button-item" @click="codeView = false">
+                <span class="x-icon x-icon-x"></span>
+            </div>
+            </Tooltip>
+          </div>
+          <div v-show="!codeView">
+          <Tooltip content="查看源码" placement="left">
+          <div class="button-item" @click="clickCode">
+              <span class="x-icon x-icon-codepen"></span>
+          </div>
+          </Tooltip>
+
+            <Tooltip content="页面设置" placement="left">
+           <div class="button-item">
+              <span class="x-icon x-icon-sidebar"></span>
+          </div>
+            </Tooltip>
+
           <div class="zoom">
-            <a-icon type="zoom-in" />
+            <Tooltip content="放大" placement="left">
+              <div class="x-icon x-icon-zoom-in"></div>
+            </Tooltip>
             <span>100%</span>
-            <a-icon type="zoom-out" />
+            <Tooltip content="缩小" placement="left">
+              <div class="x-icon x-icon-zoom-out"></div>
+            </Tooltip>
           </div>
-          <div class="button-item">
-            <a-icon type="rollback" />
-            <span>撤销</span>
           </div>
-          <div class="button-item">
-            <a-icon type="retweet" />
-            <span>重做</span>
-          </div>
-          <div class="button-item">
-            <a-icon type="redo" />
-            <span>清空</span>
-          </div>
-          <div class="button-item">
-            <a-icon type="eye" />
-            <span>预览</span>
-          </div>
-          <div class="button-item">
-            <a-icon type="download" />
-            <span>下载</span>
-          </div>
+
         </div>
-      </div>-->
+      </div>
+
+      <div class="pageCode" v-show="codeView">
+        <highlight-code lang="html">
+                {{pageCode}}
+        </highlight-code>
+      </div>
 
       <div class="phone-page">
         <div class="phone-head">
@@ -76,6 +87,8 @@ export default {
         text: "00:00",
         timer: null,
       },
+      pageCode: "",
+      codeView: false,
     };
   },
   computed: {
@@ -104,7 +117,8 @@ export default {
   },
   methods: {
     clickCode() {
-      conversion(this.page);
+      this.codeView = true
+      this.pageCode = conversion(this.page)
     },
   },
 };
